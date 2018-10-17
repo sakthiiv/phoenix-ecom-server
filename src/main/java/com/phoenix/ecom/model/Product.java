@@ -1,17 +1,22 @@
 package com.phoenix.ecom.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-public class Product {
-    String name;
+import java.io.Serializable;
+
+@Document(collection = "product")
+public class Product implements Serializable {
+    String prodName;
     @Id
     String id;
     public String getName() {
-        return name;
+        return prodName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String prodName) {
+        this.prodName = prodName;
     }
 
 

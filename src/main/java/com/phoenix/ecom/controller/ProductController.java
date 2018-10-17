@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/")
-public class SampleController {
+public class ProductController {
 
     @Autowired
     ProductService productService;
 
-    @GetMapping("display")
+    @GetMapping("displayId")
     public ResponseEntity<String> display(){
-        String prodName = productService.listProduct("abcd");
-        return ResponseEntity.ok(prodName);
+        String prodID = productService.displayProductId("laptop");
+        return ResponseEntity.ok(prodID);
     }
 
 }

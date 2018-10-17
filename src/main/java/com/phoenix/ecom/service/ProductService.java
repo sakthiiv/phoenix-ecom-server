@@ -1,6 +1,6 @@
 package com.phoenix.ecom.service;
 
-import com.phoenix.ecom.repository.ProductRepository;
+import com.phoenix.ecom.repository.product.ProductRepositoryCustomImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 public class ProductService {
 
     @Autowired
-    ProductRepository productRepository;
+    ProductRepositoryCustomImpl productRepositoryCustom;
 
-    public String listProduct(String nameProd){
-        String name = productRepository.findByName(nameProd);
-        return name;
+    public String displayProductId(String name) {
+        String prodId = productRepositoryCustom.findProductIdByName(name);
+        return prodId;
     }
 }

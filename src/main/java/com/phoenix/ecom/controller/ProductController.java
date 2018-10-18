@@ -1,6 +1,6 @@
 package com.phoenix.ecom.controller;
 
-import com.phoenix.ecom.service.ProductService;
+import com.phoenix.ecom.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,6 +1,6 @@
 package com.phoenix.ecom.repository.product;
 
-public interface ProductRepositoryCustom {
+public interface IProductRepository {
 
     String findProductIdByName(String name);
 }

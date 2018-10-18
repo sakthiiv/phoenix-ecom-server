@@ -14,12 +14,6 @@ public class ProductRepository implements IProductRepository {
     MongoTemplate mongoTemplate;
 
     @Override
-    public String findProductIdByName(String name) {
-        Product product = mongoTemplate.findOne(new Query(Criteria.where("prodName").is(name)), Product.class);
-        return product.getId();
-    }
-
-    @Override
     public String saveProduct(Product product) {
         mongoTemplate.insert(product, "product");
         Product productSaved = mongoTemplate.findOne(new Query(Criteria.where("name").is(product.getName())), Product.class);

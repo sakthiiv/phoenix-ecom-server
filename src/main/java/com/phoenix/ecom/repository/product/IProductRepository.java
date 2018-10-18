@@ -4,7 +4,5 @@ import com.phoenix.ecom.model.Product;
 
 public interface IProductRepository {
 
-    String findProductIdByName(String name);
-
     String saveProduct(Product product);
 }

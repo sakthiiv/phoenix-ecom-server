@@ -8,6 +8,9 @@ import java.io.Serializable;
 @Document(collection = "product")
 public class Product implements Serializable {
 
+    Product(){
+    }
+
     public Product(String name, float price, String categoryId, String subCategoryId, String description, boolean isValid) {
         this.name = name;
         this.price = price;

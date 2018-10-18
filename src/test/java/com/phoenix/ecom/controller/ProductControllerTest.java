@@ -1,38 +1,51 @@
 package com.phoenix.ecom.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.phoenix.ecom.model.Product;
+import org.bson.types.ObjectId;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 
-
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {ProductController.class })
-@WebAppConfiguration
-public class ProductControllerTest {
-
-    private MockMvc mockMvc;
+public class ProductControllerTest extends AbstractTest {
 
     @Autowired
-    ObjectMapper objectMapper;
+    MongoTemplate mongoTemplate;
 
-    @Test
-    public void testCreationOfANewproductSucceeds() throws Exception {
-        //Product product = new Product();
-        //String json = objectMapper.;
-
-        /*mockMvc.perform(
-                post("/product")
-                        .accept(MediaType.APPLICATION_JSON)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(json))
-                .andExpect(status().isCreated());*/
+    @Override
+    @Before
+    public void setUp() {
+        super.setUp();
     }
 
+    @Test
+    public void createProduct() throws Exception {
+        String uri = "/api/v1/product";
+        Product product = new Product("iPad", 50000, "electronic", "tablet", "apple", true);
+
+        String inputJson = super.mapToJson(product);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(inputJson)).andReturn();
+
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(201, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        assertNotNull(content);
+
+        mongoTemplate.remove(new Query(Criteria.where("Id").is(new ObjectId(content))), Product.class);
+    }
 }
+
+
+
 

@@ -1,7 +1,7 @@
 package com.phoenix.ecom.service;
 
 import com.phoenix.ecom.model.Product;
-import com.phoenix.ecom.repository.product.ProductRepository;
+import com.phoenix.ecom.repository.product.IProductRepository;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -14,7 +14,7 @@ public class ProductServiceTest {
     public void shouldCreateService(){
 
         Product product = mock(Product.class);
-        ProductRepository repository = mock(ProductRepository.class);
+        IProductRepository repository = mock(IProductRepository.class);
 
         Mockito.when(repository.saveProduct(product)).thenReturn("123");
     }

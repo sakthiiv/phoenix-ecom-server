@@ -11,8 +11,14 @@
 .sts4-cache
 .class
 
-### IntelliJ IDEA ###
 .idea
+
+### IntelliJ IDEA ###
+*/.idea/work*/.idea/workspace.xml
+*/.idea/tasks.xml
+/build/
+*/.idea/workspace.xml
+
 *.iws
 *.iml
 *.ipr

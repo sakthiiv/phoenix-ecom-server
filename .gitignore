@@ -11,8 +11,12 @@
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
 .idea
+
+### IntelliJ IDEA ###
+*/.idea/work*/.idea/workspace.xml
+*/.idea/tasks.xml
+
 *.iws
 *.iml
 *.ipr

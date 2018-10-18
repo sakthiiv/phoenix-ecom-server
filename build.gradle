@@ -24,8 +24,15 @@ repositories {
 }
 
 dependencies {
+
     compile('org.springframework.boot:spring-boot-starter-data-mongodb')
     compile( 'org.springframework.boot:spring-boot-starter-web')
     testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile 'org.mongodb:mongodb-driver:3.6.3'
+	compile 'org.springframework.data:spring-data-mongodb:2.0.6.RELEASE'
+	compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.6.3'
+	implementation('org.springframework.boot:spring-boot-starter-data-mongodb')
+	
+	
 }
 

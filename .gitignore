@@ -10,8 +10,11 @@
 .springBeans
 .sts4-cache
 .class
-
 .idea
+.DS_Store
+.idea/workspace.xml
+build/libs/*
+*/build/libs/*
 
 ### IntelliJ IDEA ###
 */.idea/work*/.idea/workspace.xml
@@ -31,3 +34,4 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+

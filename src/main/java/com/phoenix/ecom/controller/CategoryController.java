@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api/v1")
 public class CategoryController {
 
     @Autowired
@@ -41,6 +41,11 @@ public class CategoryController {
 
     }
 
+    @DeleteMapping("category/{id}")
+    public ResponseEntity<String>deleteCategory(@RequestBody Category category){
+        categoryService.deleteCategory(category);
+        return new ResponseEntity<>("Category deleted successfully",HttpStatus.OK);
+    }
 
 
 

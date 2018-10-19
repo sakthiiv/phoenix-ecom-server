@@ -28,6 +28,10 @@ public class CategoryService {
         }
     }
 
+    public void deleteCategory(Category category){
+
+    }
+
 
     public List<Category> getAllCategories() {
         List<Category> categories = categoryRepository.getAllCategories();

@@ -19,6 +19,7 @@ import java.util.List;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -45,18 +46,15 @@ public class CategoryControllerTest {
         }
     }
 
-   /* @Test
-    public void shouldGetAllCategories() throws Exception {\
-        Category category=new Category();
-        category.setDescription("Electronics");
-        category.setName("El");
-        Category phone=new Category();
-        phone.setName("Phone");
-        List<Category> subCategories=new ArrayList<>();
-        subCategories.add(phone);
-        category.setSubCategory(subCategories);
-        when(categoryService.getAllCategories()).thenReturn()
-        this.mvc.perform(get("/category")).andExpect(status().isOk());
+  /* @Test
+    public void shouldGetAllCategories() throws Exception {
+       List subCategoryNames = new ArrayList<String>();
+       subCategoryNames.add("sub_electronics");
+       Category category = initializeCategory("Electronics", "Descriptions for electronics", subCategoryNames);
+
+       when(categoryService.getAllCategories()).thenReturn(anyList());
+
+       this.mvc.perform(get("/category")).andExpect(status().isOk());
     }*/
 
     @Test
@@ -65,7 +63,7 @@ public class CategoryControllerTest {
         subCategoryNames.add("sub_electronics");
         Category category = initializeCategory("Electronics", "Descriptions for electronics", subCategoryNames);
 
-        this.mvc.perform(post("/category").contentType(MediaType.APPLICATION_JSON).content(asJsonString(category))).andDo(print()).andExpect(status().isOk())
+        this.mvc.perform(post("/category").contentType(MediaType.APPLICATION_JSON).content(asJsonString(category))).andDo(print()).andExpect(status().isCreated())
                 .andExpect(content().string(containsString("Category created successfully")));
 
 

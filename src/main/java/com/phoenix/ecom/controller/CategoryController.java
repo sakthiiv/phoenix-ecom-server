@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/")
 public class CategoryController {
@@ -16,11 +18,10 @@ public class CategoryController {
     private CategoryService categoryService;
 
 
-    @GetMapping("/category")
-    public ResponseEntity<String> displayAllCategories(){
-
-        return ResponseEntity.ok("read category");
-    }
+    /*@GetMapping("/category")
+    public @ResponseBody ResponseEntity<List<Category>> displayAllCategories(){
+        return new ResponseEntity<>(categoryService.getAllCategories(),HttpStatus.OK);
+    }*/
 
 
 //    @GetMapping("/category/{id}")
@@ -33,7 +34,7 @@ public class CategoryController {
     public ResponseEntity<String> createNewCategory(@RequestBody Category category){
         try{
             categoryService.createNewCategory(category);
-            return ResponseEntity.ok("Category created successfully");
+            return new ResponseEntity<>("Category created successfully",HttpStatus.CREATED);
         }
         catch(Exception e){
             return new ResponseEntity<String>("Server Error", HttpStatus.INTERNAL_SERVER_ERROR);

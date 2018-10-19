@@ -1,8 +1,10 @@
 package com.phoenix.ecom.service.category;
 
+import com.mongodb.MongoException;
 import com.phoenix.ecom.model.Category;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
+import com.phoenix.ecom.repository.category.CategoryRepository;
+import com.phoenix.ecom.repository.category.ICategoryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,14 +12,24 @@ import java.util.List;
 
 @Service
 public class CategoryService {
-    public void createNewCategory(Category category) {
 
+    @Autowired
+    private ICategoryRepository categoryRepository;
 
-
+    public CategoryService(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
     }
 
-    public List<Category> getAllCategories() {
+    public void createNewCategory(Category category){
+        try{
+            categoryRepository.saveCategory(category);
+        }catch (MongoException e){
+            throw new MongoException(e.getMessage());
+        }
+    }
 
+
+    public List<Category> getAllCategories() {
         return null;
     }
 }

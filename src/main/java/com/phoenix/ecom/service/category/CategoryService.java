@@ -44,4 +44,12 @@ public class CategoryService {
             throw new Exception();
         }
     }
+
+    public void updateCategory(Category category){
+        try {
+            categoryRepository.updateCategory(category);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
 }

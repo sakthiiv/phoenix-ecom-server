@@ -60,15 +60,15 @@ public class CategoryController {
 
 
 
-//    @PutMapping("/category/{id}")
-//    public ResponseEntity<Object> updateCategory(@RequestBody Category category, @PathVariable int id) {
-//
-//        return ResponseEntity.ok("Category updated successfully");
-//    }
-
-//    @DeleteMapping("/category/{id}")
-//    public void deleteStudent(@PathVariable int id) {
-//
-//    }
+    @PutMapping("/category/{id}")
+    public ResponseEntity<Object> updateCategory(@RequestBody Category category) {
+        try{
+            categoryService.updateCategory(category);
+            return ResponseEntity.ok("Category updated successfully");
+        } catch (Exception e){
+            return new ResponseEntity("{\"message\" : \"Server Error\"}", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
 
     }
+
+}

@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="830e7d9b-4d25-4bd1-9b13-cdcb6e8c3dec" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/phoenix/ecom/controller/ProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/phoenix/ecom/controller/ProductController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/ecom-0.0.1-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/phoenix/ecom/controller/ImageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/phoenix/ecom/controller/ImageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/phoenix/ecom/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/phoenix/ecom/controller/CategoryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/phoenix/ecom/repository/category/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/phoenix/ecom/repository/category/CategoryRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/phoenix/ecom/repository/category/ICategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/phoenix/ecom/repository/category/ICategoryRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/phoenix/ecom/service/category/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/phoenix/ecom/service/category/CategoryService.java" afterDir="false" />
@@ -67,22 +64,22 @@
     <session id="1000144602">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="164" />
+          <entry key="java" value="745" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="164" />
+          <entry key="JAVA" value="745" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="1" />
+          <entry key="java" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="1" />
+          <entry key="JAVA" value="6" />
         </counts>
       </usages-collector>
     </session>
@@ -90,23 +87,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/phoenix/ecom/service/product/ProductService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-              <folding>
-                <element signature="e#399#400#0" expanded="true" />
-                <element signature="e#453#454#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/phoenix/ecom/controller/CategoryControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="139" column="5" selection-start-line="139" selection-start-column="5" selection-end-line="139" selection-end-column="5" />
+            <state relative-caret-position="372">
+              <caret line="166" column="54" selection-start-line="166" selection-start-column="54" selection-end-line="166" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1200#1201#0" expanded="true" />
@@ -117,10 +101,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/phoenix/ecom/controller/AbstractTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/phoenix/ecom/service/category/CategoryService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="33" column="10" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
+            <state relative-caret-position="214">
+              <caret line="30" column="39" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="39" />
               <folding>
                 <element signature="e#559#560#0" expanded="true" />
                 <element signature="e#617#618#0" expanded="true" />
@@ -130,28 +126,42 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/phoenix/ecom/service/CategoryServiceTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="59" column="31" lean-forward="true" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/phoenix/ecom/repository/category/CategoryRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/phoenix/ecom/repository/category/ICategoryRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+            <state relative-caret-position="135">
+              <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/phoenix/ecom/service/CategoryServiceTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-15">
+              <caret line="109" column="78" selection-start-line="109" selection-start-column="78" selection-end-line="109" selection-end-column="78" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/phoenix/ecom/repository/category/CategoryRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="495">
+              <caret line="46" column="89" selection-start-line="46" selection-start-column="89" selection-end-line="46" selection-end-column="89" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/phoenix/ecom/model/Category.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#781#782#0" expanded="true" />
+                <element signature="e#811#812#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -159,8 +169,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/phoenix/ecom/controller/CategoryController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="56" column="108" selection-start-line="56" selection-start-column="108" selection-end-line="56" selection-end-column="108" />
+            <state relative-caret-position="194">
+              <caret line="50" column="60" selection-start-line="50" selection-start-column="60" selection-end-line="50" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -627,12 +637,14 @@
         <option value="$PROJECT_DIR$/src/test/java/com/phoenix/ecom/services/CategoryServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/phoenix/ecom/model/Category.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/phoenix/ecom/service/CategoryService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/phoenix/ecom/controller/CategoryController.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/phoenix/ecom/controllers/CategoryControllerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/phoenix/ecom/controller/ImageController.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/phoenix/ecom/controller/CategoryControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/phoenix/ecom/repository/category/ICategoryRepository.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/phoenix/ecom/service/CategoryServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/phoenix/ecom/service/category/CategoryService.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/phoenix/ecom/controller/CategoryControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/phoenix/ecom/controller/CategoryController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/phoenix/ecom/repository/category/CategoryRepository.java" />
       </list>
     </option>
   </component>
@@ -693,6 +705,15 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ecom" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ecom" type="b2602c69:ProjectViewProjectNode" />
+              <item name="phoenix-ecom-server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ecom" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ecom" type="b2602c69:ProjectViewProjectNode" />
@@ -780,7 +801,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539955416153" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539959602768" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/phoenix/ecom/service" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
@@ -802,7 +823,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CategoryControllerTest (1)">
+  <component name="RunManager" selected="JUnit.CategoryServiceTest.shouldThrowAnExceptionIfThereIsAnErrorInTryingToDeleteACategoryByTheRepository">
     <configuration name="CategoryControllerTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ecom_test" />
       <extension name="coverage">
@@ -817,47 +838,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CategoryControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CategoryControllerTest.shouldUpdateTheCategoryBasedOnCategoryId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ecom_test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.phoenix.ecom.controllers.*" />
+          <option name="PATTERN" value="com.phoenix.ecom.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.phoenix.ecom.controllers" />
-      <option name="MAIN_CLASS_NAME" value="com.phoenix.ecom.controllers.CategoryControllerTest" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CategoryControllerTest.shouldCreateACategory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ecom_test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.phoenix.ecom.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.phoenix.ecom.controllers" />
-      <option name="MAIN_CLASS_NAME" value="com.phoenix.ecom.controllers.CategoryControllerTest" />
-      <option name="METHOD_NAME" value="shouldCreateACategory" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CategoryControllerTest.testGet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ecom_test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.phoenix.ecom.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.phoenix.ecom.controllers" />
-      <option name="MAIN_CLASS_NAME" value="com.phoenix.ecom.controllers.CategoryControllerTest" />
-      <option name="METHOD_NAME" value="testGet" />
+      <option name="PACKAGE_NAME" value="com.phoenix.ecom.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.phoenix.ecom.controller.CategoryControllerTest" />
+      <option name="METHOD_NAME" value="shouldUpdateTheCategoryBasedOnCategoryId" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -877,20 +868,52 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CategoryServiceTest.shouldThrowAnExceptionIfThereIsAnErrorInTryingToDeleteACategoryByTheRepository" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ecom_test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.phoenix.ecom.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.phoenix.ecom.service" />
+      <option name="MAIN_CLASS_NAME" value="com.phoenix.ecom.service.CategoryServiceTest" />
+      <option name="METHOD_NAME" value="shouldThrowAnExceptionIfThereIsAnErrorInTryingToDeleteACategoryByTheRepository" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CategoryServiceTest.shouldUpdateASpecificCategory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ecom_test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.phoenix.ecom.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.phoenix.ecom.service" />
+      <option name="MAIN_CLASS_NAME" value="com.phoenix.ecom.service.CategoryServiceTest" />
+      <option name="METHOD_NAME" value="shouldUpdateASpecificCategory" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="JUnit.CategoryControllerTest" />
-      <item itemvalue="JUnit.CategoryControllerTest.shouldCreateACategory" />
-      <item itemvalue="JUnit.CategoryControllerTest.testGet" />
       <item itemvalue="JUnit.CategoryControllerTest (1)" />
       <item itemvalue="JUnit.CategoryServiceTest" />
+      <item itemvalue="JUnit.CategoryControllerTest.shouldUpdateTheCategoryBasedOnCategoryId" />
+      <item itemvalue="JUnit.CategoryServiceTest.shouldUpdateASpecificCategory" />
+      <item itemvalue="JUnit.CategoryServiceTest.shouldThrowAnExceptionIfThereIsAnErrorInTryingToDeleteACategoryByTheRepository" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CategoryControllerTest (1)" />
+        <item itemvalue="JUnit.CategoryServiceTest.shouldThrowAnExceptionIfThereIsAnErrorInTryingToDeleteACategoryByTheRepository" />
         <item itemvalue="JUnit.CategoryServiceTest" />
-        <item itemvalue="JUnit.CategoryControllerTest.shouldCreateACategory" />
-        <item itemvalue="JUnit.CategoryControllerTest.testGet" />
-        <item itemvalue="JUnit.CategoryControllerTest" />
+        <item itemvalue="JUnit.CategoryServiceTest.shouldUpdateASpecificCategory" />
+        <item itemvalue="JUnit.CategoryControllerTest (1)" />
+        <item itemvalue="JUnit.CategoryControllerTest.shouldUpdateTheCategoryBasedOnCategoryId" />
       </list>
     </recent_temporary>
   </component>
@@ -908,42 +931,42 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CategoryControllerTest_shouldCreateACategory - 2018.10.18 at 17h 11m 44s.xml">
-      <configuration name="CategoryControllerTest.shouldCreateACategory" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CategoryControllerTest_testGet - 2018.10.18 at 17h 11m 52s.xml">
-      <configuration name="CategoryControllerTest.testGet" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CategoryControllerTest_testGet - 2018.10.18 at 17h 11m 56s.xml">
-      <configuration name="CategoryControllerTest.testGet" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CategoryControllerTest_shouldCreateACategory - 2018.10.18 at 17h 12m 29s.xml">
-      <configuration name="CategoryControllerTest.shouldCreateACategory" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CategoryControllerTest_shouldCreateACategory - 2018.10.18 at 17h 18m 48s.xml">
-      <configuration name="CategoryControllerTest.shouldCreateACategory" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CategoryControllerTest_shouldCreateACategory - 2018.10.18 at 17h 19m 01s.xml">
-      <configuration name="CategoryControllerTest.shouldCreateACategory" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CategoryControllerTest_(1) - 2018.10.19 at 18h 28m 54s.xml">
-      <configuration name="CategoryControllerTest (1)" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CategoryServiceTest - 2018.10.19 at 18h 29m 22s.xml">
-      <configuration name="CategoryServiceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CategoryServiceTest - 2018.10.19 at 18h 52m 10s.xml">
-      <configuration name="CategoryServiceTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="CategoryControllerTest_(1) - 2018.10.19 at 18h 52m 28s.xml">
       <configuration name="CategoryControllerTest (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CategoryControllerTest_shouldUpdateTheCategoryBasedOnCategoryId - 2018.10.19 at 19h 13m 38s.xml">
+      <configuration name="CategoryControllerTest.shouldUpdateTheCategoryBasedOnCategoryId" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CategoryControllerTest_shouldUpdateTheCategoryBasedOnCategoryId - 2018.10.19 at 19h 17m 09s.xml">
+      <configuration name="CategoryControllerTest.shouldUpdateTheCategoryBasedOnCategoryId" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CategoryControllerTest_(1) - 2018.10.19 at 19h 23m 16s.xml">
+      <configuration name="CategoryControllerTest (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CategoryServiceTest_shouldUpdateASpecificCategory - 2018.10.19 at 19h 29m 55s.xml">
+      <configuration name="CategoryServiceTest.shouldUpdateASpecificCategory" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CategoryServiceTest_shouldUpdateASpecificCategory - 2018.10.19 at 19h 30m 13s.xml">
+      <configuration name="CategoryServiceTest.shouldUpdateASpecificCategory" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CategoryServiceTest - 2018.10.19 at 19h 31m 12s.xml">
+      <configuration name="CategoryServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CategoryServiceTest_shouldThrowAnExceptionIfThereIsAnErrorInTryingToDeleteACategoryByTheRepository - 2018.10.19 at 19h 31m 44s.xml">
+      <configuration name="CategoryServiceTest.shouldThrowAnExceptionIfThereIsAnErrorInTryingToDeleteACategoryByTheRepository" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CategoryServiceTest - 2018.10.19 at 19h 32m 24s.xml">
+      <configuration name="CategoryServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CategoryServiceTest_shouldThrowAnExceptionIfThereIsAnErrorInTryingToDeleteACategoryByTheRepository - 2018.10.19 at 19h 33m 38s.xml">
+      <configuration name="CategoryServiceTest.shouldThrowAnExceptionIfThereIsAnErrorInTryingToDeleteACategoryByTheRepository" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25579977" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25579977" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -954,13 +977,13 @@
       <window_info anchor="bottom" id="Messages" order="0" weight="0.32959184" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.4867347" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.4867347" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.29489797" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.29489797" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="11" weight="0.32982457" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -1090,18 +1113,6 @@
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib/rt.jar!/sun/misc/Launcher.class" />
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/src.zip!/java/lang/ClassLoader.java" />
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/src.zip!/java/lang/Object.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/phoenix/ecom/model/Category.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#781#782#0" expanded="true" />
-            <element signature="e#811#812#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/5.0.9.RELEASE/c19005e8a2a2216b0e9da304f1dce8ba0d72e110/spring-web-5.0.9.RELEASE-sources.jar!/org/springframework/web/util/UrlPathHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -1116,13 +1127,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-test/5.0.9.RELEASE/e1e6cff03e69e4db489d723c9a1c91afe8e0c637/spring-test-5.0.9.RELEASE-sources.jar!/org/springframework/test/web/servlet/request/MockMvcRequestBuilders.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="72" selection-start-line="72" selection-end-line="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-test/5.0.9.RELEASE/e1e6cff03e69e4db489d723c9a1c91afe8e0c637/spring-test-5.0.9.RELEASE-sources.jar!/org/springframework/test/web/servlet/MockMvc.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1134,13 +1138,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/phoenix/ecom/controller/CategoryController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="56" column="108" selection-start-line="56" selection-start-column="108" selection-end-line="56" selection-end-column="108" />
         </state>
       </provider>
     </entry>
@@ -1163,13 +1160,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/phoenix/ecom/controller/AbstractTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/phoenix/ecom/controller/ProductControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -1179,25 +1169,68 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/phoenix/ecom/controller/ImageController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="7" lean-forward="true" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
+        <state relative-caret-position="261">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="33" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/phoenix/ecom/repository/category/CategoryRepository.java">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-test/5.0.9.RELEASE/e1e6cff03e69e4db489d723c9a1c91afe8e0c637/spring-test-5.0.9.RELEASE-sources.jar!/org/springframework/test/web/servlet/request/MockMvcRequestBuilders.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+        <state relative-caret-position="187">
+          <caret line="125" column="48" selection-start-line="125" selection-start-column="48" selection-end-line="125" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/phoenix/ecom/controller/AbstractTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/phoenix/ecom/repository/category/ICategoryRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/phoenix/ecom/controller/CategoryControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="166" column="54" selection-start-line="166" selection-start-column="54" selection-end-line="166" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1200#1201#0" expanded="true" />
+            <element signature="e#1229#1230#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/phoenix/ecom/service/CategoryServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-15">
+          <caret line="109" column="78" selection-start-line="109" selection-start-column="78" selection-end-line="109" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/phoenix/ecom/controller/CategoryController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="50" column="60" selection-start-line="50" selection-start-column="60" selection-end-line="50" selection-end-column="60" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/phoenix/ecom/service/category/CategoryService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="33" column="10" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
+        <state relative-caret-position="214">
+          <caret line="30" column="39" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="39" />
           <folding>
             <element signature="e#559#560#0" expanded="true" />
             <element signature="e#617#618#0" expanded="true" />
@@ -1205,22 +1238,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/phoenix/ecom/service/CategoryServiceTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/phoenix/ecom/model/Category.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="59" column="31" lean-forward="true" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="31" />
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#781#782#0" expanded="true" />
+            <element signature="e#811#812#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/phoenix/ecom/controller/CategoryControllerTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/phoenix/ecom/repository/category/CategoryRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="139" column="5" selection-start-line="139" selection-start-column="5" selection-end-line="139" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1200#1201#0" expanded="true" />
-            <element signature="e#1229#1230#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="495">
+          <caret line="46" column="89" selection-start-line="46" selection-start-column="89" selection-end-line="46" selection-end-column="89" />
         </state>
       </provider>
     </entry>

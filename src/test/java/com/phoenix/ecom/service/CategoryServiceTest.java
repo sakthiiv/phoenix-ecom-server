@@ -107,9 +107,34 @@ public class CategoryServiceTest {
         Category category = initializeCategory("Electronics", "Descriptions for electronics", subCategoryNames, categoryId);
         ArgumentCaptor<Category> ac = ArgumentCaptor.forClass(Category.class);
 
-        doThrow(MongoException.class).when(categoryRepository).saveCategory(ac.capture());
+        doThrow(MongoException.class).when(categoryRepository).deleteCategory(categoryId);
 
-        categoryService.createNewCategory(category);
+        categoryService.deleteCategory(category);
+
+    }
+
+    @Test
+    public void shouldUpdateASpecificCategory() {
+        String categoryId = "123";
+        List subCategoryNames = new ArrayList<String>();
+        Category category = initializeCategory("", "", subCategoryNames, categoryId);
+        ArgumentCaptor<Category> ac = ArgumentCaptor.forClass(Category.class);
+
+        categoryService.updateCategory(category);
+
+        verify(categoryRepository, times(1)).updateCategory(category);
+    }
+
+    @Test(expected = MongoException.class)
+    public void shouldThrowAnExceptionIfThereIsAnErrorInTryingToUpdateACategoryByTheRepository() {
+        String categoryId = "123";
+        List subCategoryNames = new ArrayList<String>();
+        Category category = initializeCategory("Electronics", "Descriptions for electronics", subCategoryNames, categoryId);
+        ArgumentCaptor<Category> ac = ArgumentCaptor.forClass(Category.class);
+
+        doThrow(MongoException.class).when(categoryRepository).updateCategory(ac.capture());
+
+        categoryService.updateCategory(category);
 
     }
 

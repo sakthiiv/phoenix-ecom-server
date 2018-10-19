@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -32,5 +33,17 @@ public class CategoryRepository implements ICategoryRepository {
         Query query = new Query();
         query.addCriteria(Criteria.where("_id").is(new ObjectId(id)));
         mongoTemplate.findAndRemove(query,Category.class,collectionName);
+    }
+
+    @Override
+    public void updateCategory(Category category) {
+        Query findQuery = new Query();
+        Update updateQuery = new Update();
+        updateQuery.set("description",category.getDescription());
+        updateQuery.set("name",category.getName());
+        updateQuery.set("subCategory",category.getSubCategory());
+        findQuery.addCriteria(Criteria.where("_id").is(new ObjectId(category.getId())));
+
+        mongoTemplate.findAndModify(findQuery,updateQuery,Category.class,collectionName);
     }
 }

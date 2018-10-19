@@ -9,4 +9,5 @@ public interface ICategoryRepository {
 
     List<Category> getAllCategories();
     void deleteCategory(String id);
+    void updateCategory(Category category);
 }

@@ -15,6 +15,7 @@ import java.util.List;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -110,7 +111,6 @@ public class CategoryControllerTest extends AbstractTest{
         String id  = "123";
         List subCategoryNames = new ArrayList<String>();
         Category category = initializeCategory("", "", subCategoryNames,id);
-
         String inputJson = super.mapToJson(category);
 
         this.mvc.perform(delete("/api/v1/category/123").contentType(MediaType.APPLICATION_JSON).content(inputJson)).andDo(print()).andExpect(status().isOk())
@@ -138,4 +138,39 @@ public class CategoryControllerTest extends AbstractTest{
         this.mvc.perform(delete("/api/v1/category/123").contentType(MediaType.APPLICATION_JSON).content(inputJson)).andDo(print()).andExpect(status().is5xxServerError())
                 .andExpect(content().string(containsString("Server Error")));
     }
+
+    @Test
+    public void shouldUpdateTheCategoryBasedOnCategoryId() throws Exception {
+        String id = "123";
+        List subCategoryNames = new ArrayList<String>();
+        Category category = initializeCategory("", "Category Description", subCategoryNames,id);
+        String inputJson = super.mapToJson(category);
+
+        this.mvc.perform(put("/api/v1/category/123").contentType(MediaType.APPLICATION_JSON).content(inputJson)).andDo(print()).andExpect(status().isOk())
+                .andExpect(content().string(containsString("Category updated successfully")));
+
+
+        ArgumentCaptor<Category> ac = ArgumentCaptor.forClass(Category.class);
+
+        verify(categoryService, times(1)).updateCategory(ac.capture());
+        Category value = ac.getValue();
+        assertEquals("123",value.getId());
+        assertEquals("Category Description",value.getDescription());
+
+    }
+
+    @Test
+    public void shouldReturnInternalServerErrorIfThereIsAnIssueWithTheServiceUpdatingTheCategoryId() throws Exception {
+        String id  = "123";
+        List subCategoryNames = new ArrayList<String>();
+        Category category = initializeCategory("", "", subCategoryNames,id);
+        ArgumentCaptor<Category> ac = ArgumentCaptor.forClass(Category.class);
+        String inputJson = super.mapToJson(category);
+
+        doThrow(IllegalArgumentException.class).when(categoryService).updateCategory(ac.capture());
+
+        this.mvc.perform(put("/api/v1/category/123").contentType(MediaType.APPLICATION_JSON).content(inputJson)).andDo(print()).andExpect(status().is5xxServerError())
+                .andExpect(content().string(containsString("Server Error")));
+    }
+
 }

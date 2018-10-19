@@ -8,8 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/")
 public class CategoryController {
@@ -30,14 +29,14 @@ public class CategoryController {
 //    }
 
 
-    @PostMapping("/category")
+    @RequestMapping(value= "/category", method=RequestMethod.POST, produces = "application/json")
     public ResponseEntity<String> createNewCategory(@RequestBody Category category){
         try{
             categoryService.createNewCategory(category);
-            return new ResponseEntity<>("Category created successfully",HttpStatus.CREATED);
+            return new ResponseEntity("{ \"message\":\"Category created successfully\"}",HttpStatus.CREATED);
         }
         catch(Exception e){
-            return new ResponseEntity<String>("Server Error", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity("{\"message\" : \"Server Error\"}", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }

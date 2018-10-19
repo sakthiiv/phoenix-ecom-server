@@ -36,8 +36,9 @@ public abstract class AbstractTest {
         return objectMapper.writeValueAsString(obj);
     }
 
-    protected Category initializeCategory(String categoryName, String description, List<String> subCategoryNames){
+    protected Category initializeCategory(String categoryName, String description, List<String> subCategoryNames,String categoryId){
         Category category=new Category();
+        category.setId(categoryId);
         category.setDescription(description);
         category.setName(categoryName);
         List<Category> subCategories=new ArrayList<>();

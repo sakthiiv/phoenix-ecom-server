@@ -8,19 +8,25 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api/v1")
 public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
 
 
-    /*@GetMapping("/category")
+    @GetMapping("/category")
     public @ResponseBody ResponseEntity<List<Category>> displayAllCategories(){
-        return new ResponseEntity<>(categoryService.getAllCategories(),HttpStatus.OK);
-    }*/
+        try{
+            return new ResponseEntity<>(categoryService.getAllCategories(),HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity("{\"message\":\"Server Error\"}",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 
 //    @GetMapping("/category/{id}")
@@ -41,6 +47,16 @@ public class CategoryController {
 
     }
 
+    @DeleteMapping("/category/{id}")
+    public ResponseEntity<String>deleteCategory(@RequestBody Category category){
+        try {
+            categoryService.deleteCategory(category);
+            return new ResponseEntity<>("{ \"message\":\"Category deleted successfully\"}", HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity("{\"message\" : \"Server Error\"}", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 
 

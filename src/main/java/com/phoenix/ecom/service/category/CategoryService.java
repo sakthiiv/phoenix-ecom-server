@@ -17,20 +17,27 @@ public class CategoryService {
     private ICategoryRepository categoryRepository;
 
     public CategoryService(CategoryRepository categoryRepository) {
-        this.categoryRepository = categoryRepository;
+        this.categoryRepository=categoryRepository;
     }
 
-    public void createNewCategory(Category category){
-        try{
+    public void createNewCategory(Category category) {
+        try {
             categoryRepository.saveCategory(category);
-        }catch (MongoException e){
+        } catch (MongoException e) {
             throw new MongoException(e.getMessage());
         }
     }
 
+    public void deleteCategory(Category category){
 
-    public List<Category> getAllCategories() {
-        List<Category> categories = categoryRepository.getAllCategories();
-        return categories;
+    }
+
+
+    public List<Category> getAllCategories() throws Exception {
+        try {
+            return categoryRepository.getAllCategories();
+        } catch (Exception e) {
+            throw new Exception();
+        }
     }
 }

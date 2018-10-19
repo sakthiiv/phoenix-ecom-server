@@ -138,7 +138,4 @@ public class CategoryControllerTest extends AbstractTest{
         this.mvc.perform(delete("/api/v1/category/123").contentType(MediaType.APPLICATION_JSON).content(inputJson)).andDo(print()).andExpect(status().is5xxServerError())
                 .andExpect(content().string(containsString("Server Error")));
     }
-
-
-
 }

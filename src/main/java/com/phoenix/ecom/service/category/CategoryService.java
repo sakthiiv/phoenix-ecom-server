@@ -29,7 +29,11 @@ public class CategoryService {
     }
 
     public void deleteCategory(Category category){
-
+        try {
+            categoryRepository.deleteCategory(category.getId());
+        } catch (MongoException e){
+            throw e;
+        }
     }
 
 

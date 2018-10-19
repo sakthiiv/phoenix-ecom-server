@@ -30,6 +30,7 @@ public class CategoryService {
 
 
     public List<Category> getAllCategories() {
-        return null;
+        List<Category> categories = categoryRepository.getAllCategories();
+        return categories;
     }
 }

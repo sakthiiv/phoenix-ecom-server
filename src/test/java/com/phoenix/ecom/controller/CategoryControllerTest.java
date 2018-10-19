@@ -1,5 +1,6 @@
 package com.phoenix.ecom.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.phoenix.ecom.model.Category;
 import com.phoenix.ecom.service.category.CategoryService;
 import org.junit.Before;
@@ -98,6 +99,20 @@ public class CategoryControllerTest extends AbstractTest{
         Category value = ac.getValue();
         assertEquals("123",value.getId());
 
+    }
+
+    @Test
+    public void shouldReturnInternalServerErrorIfThereIsAnIssueWithTheServiceDeletingTheCategoryId() throws Exception {
+        String id  = "123";
+        List subCategoryNames = new ArrayList<String>();
+        Category category = initializeCategory("", "", subCategoryNames,id);
+        ArgumentCaptor<Category> ac = ArgumentCaptor.forClass(Category.class);
+        String inputJson = super.mapToJson(category);
+
+        doThrow(IllegalArgumentException.class).when(categoryService).deleteCategory(ac.capture());
+
+        this.mvc.perform(delete("/api/v1/category/123").contentType(MediaType.APPLICATION_JSON).content(inputJson)).andDo(print()).andExpect(status().is5xxServerError())
+                .andExpect(content().string(containsString("Server Error")));
     }
 
 

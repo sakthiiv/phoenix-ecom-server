@@ -41,10 +41,15 @@ public class CategoryController {
 
     }
 
-    @DeleteMapping("category/{id}")
+    @DeleteMapping("/category/{id}")
     public ResponseEntity<String>deleteCategory(@RequestBody Category category){
-        categoryService.deleteCategory(category);
-        return new ResponseEntity<>("Category deleted successfully",HttpStatus.OK);
+        try {
+            categoryService.deleteCategory(category);
+            return new ResponseEntity<>("{ \"message\":\"Category deleted successfully\"}", HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity("{\"message\" : \"Server Error\"}", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 

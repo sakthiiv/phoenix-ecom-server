@@ -19,7 +19,7 @@ public class ProductController {
     @PostMapping(value = "/product" , produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> create(@RequestBody Product productRequest){
         productService.createProduct(productRequest);
-        return new ResponseEntity<String>("\"Product created successfully\"", HttpStatus.CREATED);
+        return new ResponseEntity("{ \"message\":\"Product created successfully\"}", HttpStatus.CREATED);
     }
 
 }

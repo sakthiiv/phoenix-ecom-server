@@ -1,22 +1,36 @@
 package com.phoenix.ecom.service;
 
 import com.phoenix.ecom.model.Product;
-import com.phoenix.ecom.repository.product.IProductRepository;
+import com.phoenix.ecom.repository.product.ProductRepository;
+import com.phoenix.ecom.service.product.ProductService;
+import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
-
+@RunWith(MockitoJUnitRunner.class)
 public class ProductServiceTest {
+
+    @Mock
+    private ProductRepository productRepository;
+
+    private ProductService productService;
+
+    @Before
+    public void setUp() throws Exception {
+        productService = new ProductService(productRepository);
+    }
 
     @Test
     public void shouldCreateService(){
 
         Product product = mock(Product.class);
-        IProductRepository repository = mock(IProductRepository.class);
+        productService.createProduct(product);
 
-        Mockito.when(repository.saveProduct(product)).thenReturn("123");
+        verify(productRepository, times(1)).saveProduct(product);
     }
 
 }

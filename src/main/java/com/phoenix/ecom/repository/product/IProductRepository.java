@@ -4,5 +4,5 @@ import com.phoenix.ecom.model.Product;
 
 public interface IProductRepository {
 
-    String saveProduct(Product product);
+    void saveProduct(Product product);
 }

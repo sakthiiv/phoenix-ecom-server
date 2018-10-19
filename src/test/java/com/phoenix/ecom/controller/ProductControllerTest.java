@@ -8,6 +8,7 @@ import org.mockito.ArgumentCaptor;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -36,7 +37,7 @@ public class ProductControllerTest extends AbstractTest {
         String inputJson = super.mapToJson(product);
 
         this.mvc.perform(post(uri).contentType(MediaType.APPLICATION_JSON).content(inputJson)).andDo(print()).andExpect(status().isCreated())
-                .andExpect(content().string("\"Product created successfully\""));
+                .andExpect(content().string(containsString("\"Product created successfully\"")));
 
         ArgumentCaptor<Product> ac = ArgumentCaptor.forClass(Product.class);
 

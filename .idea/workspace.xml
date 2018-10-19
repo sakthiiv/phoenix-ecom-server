@@ -2,22 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30cac942-e9fb-47c0-ad38-19a68e881af1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/phoenix-ecom-server-new.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/phoenix/ecom/controller/CategoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/phoenix/ecom/model/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/phoenix/ecom/service/category/CategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/phoenix/ecom/controllers/CategoryControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/phoenix/ecom/services/CategoryServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/phoenix/ecom/EcomApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/phoenix/ecom/config/MongoDBConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/ecom-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/ecom-0.0.1-SNAPSHOT.jar" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/.idea/shelf/" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,11 +50,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="txt" value="5" />
           <entry key="xml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
+          <entry key="PLAIN_TEXT" value="5" />
           <entry key="XML" value="2" />
         </counts>
       </usages-collector>
@@ -109,11 +100,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/phoenix/ecom/controller/ProductController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="32" column="43" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
+            <state relative-caret-position="270">
+              <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -132,7 +123,7 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/phoenix/ecom/controller/CategoryController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="405">
@@ -154,7 +145,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/phoenix/ecom/service/product/ProductService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="17" column="47" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="47" />
+              <caret line="13" column="47" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="47" />
               <folding>
                 <element signature="e#401#402#0" expanded="true" />
                 <element signature="e#462#463#0" expanded="true" />
@@ -183,6 +174,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode />
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
@@ -681,7 +675,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539879656637" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539923470876" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -706,26 +700,49 @@
       <option name="presentableId" value="Default" />
       <updated>1539772526725</updated>
     </task>
-    <task id="LOCAL-00001" summary="gitignore file modified">
-      <created>1539878860410</created>
+    <task id="LOCAL-00001" summary="Merge branch 'master' of https://github.com/sakthiiv/phoenix-ecom-server&#10;&#10;# Conflicts:&#10;#&#9;build/classes/java/main/com/phoenix/ecom/controller/ProductController.class&#10;#&#9;build/classes/java/main/com/phoenix/ecom/model/Product.class&#10;#&#9;build/classes/java/main/com/phoenix/ecom/repository/product/ProductRepository.class&#10;#&#9;src/main/java/com/phoenix/ecom/controller/ProductController.java&#10;#&#9;src/main/java/com/phoenix/ecom/service/product/ProductService.java">
+      <created>1539879646196</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1539878860411</updated>
+      <updated>1539879646196</updated>
     </task>
+    <task id="LOCAL-00002" summary="Merge branch 'master' of https://github.com/sakthiiv/phoenix-ecom-server&#10;&#10;# Conflicts:&#10;#&#9;build/classes/java/main/com/phoenix/ecom/controller/ProductController.class&#10;#&#9;build/classes/java/main/com/phoenix/ecom/model/Product.class&#10;#&#9;build/classes/java/main/com/phoenix/ecom/repository/product/ProductRepository.class&#10;#&#9;src/main/java/com/phoenix/ecom/controller/ProductController.java&#10;#&#9;src/main/java/com/phoenix/ecom/service/product/ProductService.java">
+      <created>1539879659968</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1539879659968</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Merge branch 'master' of https://github.com/sakthiiv/phoenix-ecom-server&#10;&#10;# Conflicts:&#10;#&#9;build/classes/java/main/com/phoenix/ecom/controller/ProductController.class&#10;#&#9;build/classes/java/main/com/phoenix/ecom/model/Product.class&#10;#&#9;build/classes/java/main/com/phoenix/ecom/repository/product/ProductRepository.class&#10;#&#9;src/main/java/com/phoenix/ecom/controller/ProductController.java&#10;#&#9;src/main/java/com/phoenix/ecom/service/product/ProductService.java">
+      <created>1539879681766</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1539879681766</updated>
+    </task>
+    <task id="LOCAL-00004" summary="unimp">
+      <created>1539879742354</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1539879742354</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49923897" visible="true" weight="0.25274727" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989796" visible="true" weight="0.25274727" />
       <window_info id="Structure" order="1" sideWeight="0.50076103" side_tool="true" weight="0.25274727" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Learn" order="6" />
-      <window_info id="Favorites" order="7" sideWeight="0.50076103" side_tool="true" visible="true" weight="0.25274727" />
+      <window_info id="Favorites" order="7" sideWeight="0.50102043" side_tool="true" weight="0.25274727" />
       <window_info anchor="bottom" id="Messages" order="0" weight="0.32959184" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
@@ -734,7 +751,7 @@
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32959184" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32959184" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32959184" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.41428572" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="11" weight="0.32959184" />
@@ -821,7 +838,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="gitignore file modified" />
-    <option name="LAST_COMMIT_MESSAGE" value="gitignore file modified" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/sakthiiv/phoenix-ecom-server&#10;&#10;# Conflicts:&#10;#&#9;build/classes/java/main/com/phoenix/ecom/controller/ProductController.class&#10;#&#9;build/classes/java/main/com/phoenix/ecom/model/Product.class&#10;#&#9;build/classes/java/main/com/phoenix/ecom/repository/product/ProductRepository.class&#10;#&#9;src/main/java/com/phoenix/ecom/controller/ProductController.java&#10;#&#9;src/main/java/com/phoenix/ecom/service/product/ProductService.java" />
+    <MESSAGE value="unimp" />
+    <option name="LAST_COMMIT_MESSAGE" value="unimp" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/test/java/com/phoenix/ecom/controller/ProductControllerTest.java">
@@ -871,6 +890,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="31" column="29" lean-forward="true" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/phoenix/ecom/controller/ProductController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
         </state>
       </provider>
     </entry>

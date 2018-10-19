@@ -1,4 +1,4 @@
-package com.phoenix.ecom.controllers;
+package com.phoenix.ecom.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.phoenix.ecom.controller.CategoryController;

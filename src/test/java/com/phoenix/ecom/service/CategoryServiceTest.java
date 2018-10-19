@@ -1,4 +1,4 @@
-package com.phoenix.ecom.services;
+package com.phoenix.ecom.service;
 
 import org.junit.Test;
 

@@ -36,7 +36,7 @@ public class ProductControllerTest extends AbstractTest {
         String inputJson = super.mapToJson(product);
 
         this.mvc.perform(post(uri).contentType(MediaType.APPLICATION_JSON).content(inputJson)).andDo(print()).andExpect(status().isCreated())
-                .andExpect(content().string("Product created successfully"));
+                .andExpect(content().string("\"Product created successfully\""));
 
         ArgumentCaptor<Product> ac = ArgumentCaptor.forClass(Product.class);
 

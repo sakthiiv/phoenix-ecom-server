@@ -51,7 +51,7 @@ public abstract class AbstractTest {
     }
 
     protected Product initializeProduct(String productName){
-        Product product = new Product(productName, 200, "Category", "SubCategory", "Description", true);
+        Product product = new Product(productName, 200, "Category", "SubCategory", "Description");
         return product;
     }
 }

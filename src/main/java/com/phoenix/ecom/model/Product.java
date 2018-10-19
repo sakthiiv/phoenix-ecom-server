@@ -11,13 +11,12 @@ public class Product implements Serializable {
     Product(){
     }
 
-    public Product(String name, float price, String categoryId, String subCategoryId, String description, boolean isValid) {
+    public Product(String name, float price, String categoryId, String subCategoryId, String description) {
         this.name = name;
         this.price = price;
         this.categoryId = categoryId;
         this.subCategoryId = subCategoryId;
         this.description = description;
-        this.isValid = isValid;
     }
 
     @Id
@@ -81,14 +80,6 @@ public class Product implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public boolean isValid() {
-        return isValid;
-    }
-
-    public void setValid(boolean valid) {
-        isValid = valid;
     }
 
 

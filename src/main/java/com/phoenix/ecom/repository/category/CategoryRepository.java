@@ -20,6 +20,6 @@ public class CategoryRepository implements ICategoryRepository {
 
     @Override
     public List<Category> getAllCategories() {
-        return null;
+        return mongoTemplate.findAll(Category.class);
     }
 }

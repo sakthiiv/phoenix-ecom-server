@@ -1,6 +1,6 @@
 package com.phoenix.ecom.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.phoenix.ecom.model.Category;
 import com.phoenix.ecom.service.category.CategoryService;
 import org.junit.Before;
@@ -16,6 +16,7 @@ import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -32,19 +33,42 @@ public class CategoryControllerTest extends AbstractTest{
     @MockBean
     private CategoryService categoryService;
 
-   /* @Test
-    public void shouldGetAllCategories() throws Exception {\
-        Category category=new Category();
-        category.setDescription("Electronics");
-        category.setName("El");
-        Category phone=new Category();
-        phone.setName("Phone");
-        List<Category> subCategories=new ArrayList<>();
-        subCategories.add(phone);
-        category.setSubCategory(subCategories);
-        when(categoryService.getAllCategories()).thenReturn()
-        this.mvc.perform(get("/category")).andExpect(status().isOk());
-    }*/
+
+    public static String asJsonString(final Object obj) {
+        try {
+            final ObjectMapper mapper=new ObjectMapper();
+            final String jsonContent=mapper.writeValueAsString(obj);
+            return jsonContent;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+  @Test
+    public void shouldGetAllCategories() throws Exception {
+       List subCategoryNames = new ArrayList<String>();
+       subCategoryNames.add("sub_electronics");
+       Category category = initializeCategory("Electronics", "Descriptions for electronics", subCategoryNames,"");
+       List<Category> categories = new ArrayList<>();
+       categories.add(category);
+
+       when(categoryService.getAllCategories()).thenReturn(categories);
+
+       this.mvc.perform(get("/api/v1/category").contentType(MediaType.APPLICATION_JSON).content(asJsonString(category)))
+               .andDo(print()).andExpect(status().isOk());
+    }
+
+    @Test
+    public void shouldThrowServerErrorWhenTryingToGetAllCategories() throws Exception {
+        List subCategoryNames = new ArrayList<String>();
+        subCategoryNames.add("sub_electronics");
+        Category category = initializeCategory("Electronics", "Descriptions for electronics", subCategoryNames,"");
+
+        when(categoryService.getAllCategories()).thenThrow(Exception.class);
+
+        this.mvc.perform(get("/api/v1/category").contentType(MediaType.APPLICATION_JSON).content(asJsonString(category))).andExpect(status().is5xxServerError()).andDo(print())
+                .andExpect(content().string(containsString("Server Error")));;
+    }
 
     @Test
     public void shouldCreateACategory() throws Exception {
@@ -54,7 +78,7 @@ public class CategoryControllerTest extends AbstractTest{
             Category category = initializeCategory("Electronics", "Descriptions for electronics", subCategoryNames,"");
         String inputJson = super.mapToJson(category);
 
-        this.mvc.perform(post("/api/v1/category").contentType(MediaType.APPLICATION_JSON).content(inputJson)).andDo(print()).andExpect(status().isCreated())
+        this.mvc.perform(post("/api/v1/category").contentType(MediaType.APPLICATION_JSON).content(asJsonString(category))).andDo(print()).andExpect(status().isCreated())
                 .andExpect(content().string(containsString("Category created successfully")));
 
 
@@ -76,7 +100,7 @@ public class CategoryControllerTest extends AbstractTest{
 
         doThrow(IllegalArgumentException.class).when(categoryService).createNewCategory(ac.capture());
 
-        this.mvc.perform(post("/api/v1/category").contentType(MediaType.APPLICATION_JSON).content(inputJson)).andDo(print()).andExpect(status().is5xxServerError())
+        this.mvc.perform(post("/api/v1/category").contentType(MediaType.APPLICATION_JSON).content(asJsonString(category))).andDo(print()).andExpect(status().is5xxServerError())
                 .andExpect(content().string(containsString("Server Error")));
 
     }

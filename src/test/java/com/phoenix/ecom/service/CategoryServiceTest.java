@@ -14,6 +14,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -61,6 +62,31 @@ public class CategoryServiceTest {
     }
 
 
+    @Test
+    public void shouldRetrieveAllCategories() throws Exception{
+        List subCategoryNames = new ArrayList<String>();
+        subCategoryNames.add("sub_electronics");
+        Category category = initializeCategory("Electronics", "Descriptions for electronics", subCategoryNames);
+        List<Category> categories = new ArrayList<>();
+        categories.add(category);
+
+        when(categoryRepository.getAllCategories()).thenReturn(categories);
+
+        assertEquals(categoryService.getAllCategories().get(0).getName(),category.getName());
+
+    }
+
+    @Test(expected=Exception.class)
+    public void shouldThrowExceptionWhenTryingToRetrieveAllCategories(){
+        List subCategoryNames = new ArrayList<String>();
+        subCategoryNames.add("sub_electronics");
+        Category category = initializeCategory("Electronics", "Descriptions for electronics", subCategoryNames);
+        List<Category> categories = new ArrayList<>();
+        categories.add(category);
+
+        when(categoryRepository.getAllCategories()).thenThrow(Exception.class);
+
+    }
     private Category initializeCategory(String categoryName, String description, List<String> subCategoryNames){
         Category category=new Category();
         category.setDescription(description);

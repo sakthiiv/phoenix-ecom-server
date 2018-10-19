@@ -11,12 +11,13 @@ public class Product implements Serializable {
     Product(){
     }
 
-    public Product(String name, float price, String categoryId, String subCategoryId, String description) {
+    public Product(String name, float price, String categoryId, String subCategoryId, String description, String imageContent) {
         this.name = name;
         this.price = price;
         this.categoryId = categoryId;
         this.subCategoryId = subCategoryId;
         this.description = description;
+        this.content = imageContent;
     }
 
     @Id
@@ -32,7 +33,7 @@ public class Product implements Serializable {
 
     String description;
 
-    boolean isValid;
+    String content;
 
     public String getId() {
         return id;
@@ -82,5 +83,12 @@ public class Product implements Serializable {
         this.description = description;
     }
 
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 
 }

@@ -2,25 +2,23 @@
 package com.phoenix.ecom.controller;
 
 import com.phoenix.ecom.model.Product;
-import org.bson.types.ObjectId;
+import com.phoenix.ecom.service.product.ProductService;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
+import org.mockito.ArgumentCaptor;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 public class ProductControllerTest extends AbstractTest {
-
-    @Autowired
-    MongoTemplate mongoTemplate;
 
     @Override
     @Before
@@ -28,22 +26,24 @@ public class ProductControllerTest extends AbstractTest {
         super.setUp();
     }
 
+    @MockBean
+    private ProductService productService;
+
     @Test
-    public void createProduct() throws Exception {
+    public void shouldCreateAProduct() throws Exception {
+
         String uri = "/api/v1/product";
-        Product product = new Product("iPad", 50000, "electronic", "tablet", "apple", true);
-
+        Product product = initializeProduct("samsung");
         String inputJson = super.mapToJson(product);
-        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
-                .contentType(MediaType.APPLICATION_JSON_VALUE)
-                .content(inputJson)).andReturn();
 
-        int status = mvcResult.getResponse().getStatus();
-        assertEquals(201, status);
-        String content = mvcResult.getResponse().getContentAsString();
-        assertNotNull(content);
+        this.mvc.perform(post(uri).contentType(MediaType.APPLICATION_JSON).content(inputJson)).andDo(print()).andExpect(status().isCreated())
+                .andExpect(content().string("Product created successfully"));
 
-        mongoTemplate.remove(new Query(Criteria.where("Id").is(new ObjectId(content))), Product.class);
+        ArgumentCaptor<Product> ac = ArgumentCaptor.forClass(Product.class);
+
+        verify(productService, times(1)).createProduct(ac.capture());
+        Product value = ac.getValue();
+        assertEquals(product.getName(), value.getName());
     }
 }
 

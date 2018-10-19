@@ -1,6 +1,5 @@
 package com.phoenix.ecom.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.phoenix.ecom.model.Product;
 import com.phoenix.ecom.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +18,10 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @Autowired
-    ObjectMapper objectMapper;
-
     @PostMapping(value = "/product" , produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> create(@RequestBody Product productRequest){
-
-        String id = productService.createProduct(productRequest);
-        return new ResponseEntity<>(id, HttpStatus.CREATED);
+    public ResponseEntity create(@RequestBody Product productRequest){
+        productService.createProduct(productRequest);
+        return new ResponseEntity<>("Product created successfully", HttpStatus.CREATED);
     }
 
 }

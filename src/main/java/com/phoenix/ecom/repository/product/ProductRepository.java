@@ -19,7 +19,7 @@ public class ProductRepository  {
 
         Product productSaved = mongoTemplate.findOne(new Query(Criteria.where("name").is(product.getName())), Product.class);
 
-        Image image = new Image(productSaved.getId(), product.getContent());
+        Image image = new Image(productSaved.getId(), product.getImageContent());
         mongoTemplate.insert(image, "image");
     }
 

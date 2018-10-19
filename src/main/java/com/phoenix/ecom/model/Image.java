@@ -5,28 +5,28 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "image")
 public class Image {
 
-    String id;
-    String content;
+    String imageId;
+    String imageContent;
 
-    public Image(String id, String content) {
-        this.id = id;
-        this.content = content;
+    public Image(String imageId, String imageContent) {
+        this.imageId = imageId;
+        this.imageContent = imageContent;
     }
 
-    public String getId() {
-        return id;
+    public String getImageId() {
+        return imageId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setImageId(String imageId) {
+        this.imageId = imageId;
     }
 
-    public String getContent() {
-        return content;
+    public String getImageContent() {
+        return imageContent;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setImageContent(String imageContent) {
+        this.imageContent = imageContent;
     }
 
 }

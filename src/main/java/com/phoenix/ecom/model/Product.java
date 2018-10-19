@@ -17,7 +17,7 @@ public class Product implements Serializable {
         this.categoryId = categoryId;
         this.subCategoryId = subCategoryId;
         this.description = description;
-        this.content = imageContent;
+        this.imageContent = imageContent;
     }
 
     @Id
@@ -33,7 +33,7 @@ public class Product implements Serializable {
 
     String description;
 
-    String content;
+    String imageContent;
 
     public String getId() {
         return id;
@@ -83,12 +83,12 @@ public class Product implements Serializable {
         this.description = description;
     }
 
-    public String getContent() {
-        return content;
+    public String getImageContent() {
+        return imageContent;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setImageContent(String imageContent) {
+        this.imageContent = imageContent;
     }
 
 }

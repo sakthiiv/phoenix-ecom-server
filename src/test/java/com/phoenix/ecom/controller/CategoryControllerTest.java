@@ -77,7 +77,7 @@ public class CategoryControllerTest extends AbstractTest{
         List subCategoryNames = new ArrayList<String>();
         subCategoryNames.add("sub_electronics");
             Category category = initializeCategory("Electronics", "Descriptions for electronics", subCategoryNames,"");
-        String inputJson = super.mapToJson(category);
+        String inputJson = super.mapToJsonString(category);
 
         this.mvc.perform(post("/api/v1/category").contentType(MediaType.APPLICATION_JSON).content(asJsonString(category))).andDo(print()).andExpect(status().isCreated())
                 .andExpect(content().string(containsString("Category created successfully")));
@@ -97,7 +97,7 @@ public class CategoryControllerTest extends AbstractTest{
         subCategoryNames.add("sub_electronics");
         Category category = initializeCategory("Electronics", "Descriptions for electronics", subCategoryNames,"");
         ArgumentCaptor<Category> ac = ArgumentCaptor.forClass(Category.class);
-        String inputJson = super.mapToJson(category);
+        String inputJson = super.mapToJsonString(category);
 
         doThrow(IllegalArgumentException.class).when(categoryService).createNewCategory(ac.capture());
 
@@ -111,7 +111,7 @@ public class CategoryControllerTest extends AbstractTest{
         String id  = "123";
         List subCategoryNames = new ArrayList<String>();
         Category category = initializeCategory("", "", subCategoryNames,id);
-        String inputJson = super.mapToJson(category);
+        String inputJson = super.mapToJsonString(category);
 
         this.mvc.perform(delete("/api/v1/category/123").contentType(MediaType.APPLICATION_JSON).content(inputJson)).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("Category deleted successfully")));
@@ -131,7 +131,7 @@ public class CategoryControllerTest extends AbstractTest{
         List subCategoryNames = new ArrayList<String>();
         Category category = initializeCategory("", "", subCategoryNames,id);
         ArgumentCaptor<Category> ac = ArgumentCaptor.forClass(Category.class);
-        String inputJson = super.mapToJson(category);
+        String inputJson = super.mapToJsonString(category);
 
         doThrow(IllegalArgumentException.class).when(categoryService).deleteCategory(ac.capture());
 
@@ -144,7 +144,7 @@ public class CategoryControllerTest extends AbstractTest{
         String id = "123";
         List subCategoryNames = new ArrayList<String>();
         Category category = initializeCategory("", "Category Description", subCategoryNames,id);
-        String inputJson = super.mapToJson(category);
+        String inputJson = super.mapToJsonString(category);
 
         this.mvc.perform(put("/api/v1/category/123").contentType(MediaType.APPLICATION_JSON).content(inputJson)).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("Category updated successfully")));
@@ -165,7 +165,7 @@ public class CategoryControllerTest extends AbstractTest{
         List subCategoryNames = new ArrayList<String>();
         Category category = initializeCategory("", "", subCategoryNames,id);
         ArgumentCaptor<Category> ac = ArgumentCaptor.forClass(Category.class);
-        String inputJson = super.mapToJson(category);
+        String inputJson = super.mapToJsonString(category);
 
         doThrow(IllegalArgumentException.class).when(categoryService).updateCategory(ac.capture());
 

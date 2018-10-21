@@ -15,7 +15,6 @@ public class ImageController {
     @Autowired
     IImageRepository imageRepository;
 
-
     @GetMapping(value = "/image/{id}.jpg", produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<byte[]> getImage(@PathVariable String id) {
 

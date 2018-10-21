@@ -31,9 +31,10 @@ public abstract class AbstractTest {
         mvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
 
-    protected String mapToJson(Object obj) throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.writeValueAsString(obj);
+    protected static String mapToJsonString(final Object obj) throws JsonProcessingException {
+        final ObjectMapper objectMapper = new ObjectMapper();
+        final String res = objectMapper.writeValueAsString(obj);
+        return res;
     }
 
     protected Category initializeCategory(String categoryName, String description, List<String> subCategoryNames,String categoryId){

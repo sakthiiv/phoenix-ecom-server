@@ -25,12 +25,77 @@ public class ProductServiceTest {
     }
 
     @Test
-    public void shouldCreateService(){
+    public void shouldCreateProduct(){
 
         Product product = mock(Product.class);
         productService.createProduct(product);
 
         verify(productRepository, times(1)).saveProduct(product);
+    }
+
+    @Test
+    public void shouldRetrieveProduct() throws Exception {
+
+        Product product = mock(Product.class);
+        productService.getProduct(product.getId());
+
+        verify(productRepository, times(1)).findProductById(product.getId());
+    }
+
+    @Test
+    public void shouldRetrieveAllProducts() throws Exception {
+
+        productService.getProduct(null, null);
+
+        verify(productRepository, times(1)).findProductByCategoryIdAndSubCategoryId(null, null);
+    }
+
+    @Test
+    public void shouldRetrieveAllProductsForCategoryId() throws Exception {
+
+        Product product = mock(Product.class);
+        productService.getProduct(product.getCategoryId(), null);
+
+        verify(productRepository, times(1)).findProductByCategoryIdAndSubCategoryId(product.getCategoryId(), null);
+    }
+
+    @Test
+    public void shouldRetrieveAllProductsForSubCategoryId() throws Exception {
+
+        Product product = mock(Product.class);
+        productService.getProduct(null, product.getSubCategoryId());
+
+        verify(productRepository, times(1)).findProductByCategoryIdAndSubCategoryId(null, product.getSubCategoryId());
+    }
+
+    @Test
+    public void shouldRetrieveAllProductsForGivenCategoryIdAndSubCategoryId() throws Exception {
+
+        Product product = mock(Product.class);
+        productService.getProduct(product.getCategoryId(), product.getSubCategoryId());
+
+        verify(productRepository, times(1)).findProductByCategoryIdAndSubCategoryId(product.getCategoryId(), product.getSubCategoryId());
+    }
+
+    @Test
+    public void shouldUpdateProduct() throws Exception {
+
+        Product product = mock(Product.class);
+        String id = "1234";
+        when(productService.getProduct(id)).thenReturn(product);
+        productService.updateProduct(id, product);
+
+        verify(productRepository, times(1)).updateProduct(id,product);
+    }
+
+    @Test
+    public void shouldDeleteProduct() throws Exception {
+
+        Product product = mock(Product.class);
+        when(productService.getProduct(product.getId())).thenReturn(product);
+        productService.deleteProduct(product.getId());
+
+        verify(productRepository, times(1)).deleteProduct(product);
     }
 
 }

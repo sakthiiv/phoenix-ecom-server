@@ -38,7 +38,8 @@ public class CategoryServiceTest {
     public void shouldCreateCategory() {
         List subCategoryNames = new ArrayList<String>();
         subCategoryNames.add("sub_electronics");
-        Category category = initializeCategory("Electronics", "Descriptions for electronics", subCategoryNames, "");
+
+        Category category = initializeCategory("Electronics", "Descriptions for electronics", subCategoryNames,"1234");
 
         ArgumentCaptor<Category> ac = ArgumentCaptor.forClass(Category.class);
         categoryService.createNewCategory(category);
@@ -52,7 +53,8 @@ public class CategoryServiceTest {
     public void shouldThrowErrorIfTheRepositoryHasAnIssueInStoringCategory() {
         List subCategoryNames = new ArrayList<String>();
         subCategoryNames.add("sub_electronics");
-        Category category = initializeCategory("Electronics", "Descriptions for electronics", subCategoryNames, "");
+
+        Category category = initializeCategory("Electronics", "Descriptions for electronics", subCategoryNames,"1234");
         ArgumentCaptor<Category> ac = ArgumentCaptor.forClass(Category.class);
 
         doThrow(MongoException.class).when(categoryRepository).saveCategory(ac.capture());
@@ -66,7 +68,8 @@ public class CategoryServiceTest {
     public void shouldRetrieveAllCategories() throws Exception {
         List subCategoryNames = new ArrayList<String>();
         subCategoryNames.add("sub_electronics");
-        Category category = initializeCategory("Electronics", "Descriptions for electronics", subCategoryNames, "");
+
+        Category category = initializeCategory("Electronics", "Descriptions for electronics", subCategoryNames,"1234");
         List<Category> categories = new ArrayList<>();
         categories.add(category);
 
@@ -80,7 +83,7 @@ public class CategoryServiceTest {
     public void shouldThrowExceptionWhenTryingToRetrieveAllCategories() {
         List subCategoryNames = new ArrayList<String>();
         subCategoryNames.add("sub_electronics");
-        Category category = initializeCategory("Electronics", "Descriptions for electronics", subCategoryNames, "");
+        Category category = initializeCategory("Electronics", "Descriptions for electronics", subCategoryNames,"1234");
         List<Category> categories = new ArrayList<>();
         categories.add(category);
 
@@ -138,14 +141,23 @@ public class CategoryServiceTest {
 
     }
 
-    private Category initializeCategory(String categoryName, String description, List<String> subCategoryNames, String id) {
-        Category category = new Category();
-        category.setId(id);
+
+    public void shouldGetCategoryWhenPassingIdAsInput(){
+        List subCategoryNames = new ArrayList<String>();
+        subCategoryNames.add("sub_electronics");
+        Category category = initializeCategory("Electronics", "Descriptions for electronics", subCategoryNames,"1234");
+
+        when(categoryRepository.findCategoryById("1234")).thenReturn(category);
+    }
+
+    private Category initializeCategory(String categoryName, String description, List<String> subCategoryNames,String id){
+        Category category=new Category();
         category.setDescription(description);
         category.setName(categoryName);
-        List<Category> subCategories = new ArrayList<>();
-        for (String subCategoryName : subCategoryNames) {
-            Category subCategory = new Category();
+        category.setId(id);
+        List<Category> subCategories=new ArrayList<>();
+        for(String subCategoryName : subCategoryNames){
+            Category subCategory=new Category();
             subCategory.setName(subCategoryName);
             subCategories.add(subCategory);
         }

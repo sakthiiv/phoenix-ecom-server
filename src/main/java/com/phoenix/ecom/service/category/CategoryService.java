@@ -44,11 +44,20 @@ public class CategoryService {
         }
     }
 
-    public void updateCategory(Category category){
+
+    public void updateCategory(Category category) {
         try {
             categoryRepository.updateCategory(category);
         } catch (Exception e) {
             throw e;
         }
     }
+
+    public Category getCategoryById(String s) throws Exception {
+                try {
+                    return categoryRepository.findCategoryById(s);
+                } catch (Exception e) {
+                    throw new Exception();
+                }
+            }
 }

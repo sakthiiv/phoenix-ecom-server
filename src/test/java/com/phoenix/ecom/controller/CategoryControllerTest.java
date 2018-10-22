@@ -9,6 +9,7 @@ import org.mockito.ArgumentCaptor;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 
+import javax.print.attribute.standard.Media;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,6 +71,31 @@ public class CategoryControllerTest extends AbstractTest{
 
         this.mvc.perform(get("/api/v1/category").contentType(MediaType.APPLICATION_JSON).content(asJsonString(category))).andExpect(status().is5xxServerError()).andDo(print())
                 .andExpect(content().string(containsString("Server Error")));;
+    }
+
+    @Test
+    public void shouldGetCategoryCorrespondingToPassedId() throws Exception{
+        List subCategoryNames = new ArrayList<String>();
+        subCategoryNames.add("sub_electronics");
+        Category category = initializeCategory("Electronics", "Descriptions for electronics", subCategoryNames,"1234");
+
+        when(categoryService.getCategoryById("1234")).thenReturn(category);
+
+        this.mvc.perform(get("/api/v1/category/1234").contentType(MediaType.APPLICATION_JSON).content(asJsonString(category)))
+                .andExpect(status().isOk()).andDo(print());
+
+    }
+
+    @Test
+    public void shouldThrowErrorWhenTryingToGetCategoryById() throws Exception{
+        List subCategoryNames = new ArrayList<String>();
+        subCategoryNames.add("sub_electronics");
+        Category category = initializeCategory("Electronics", "Descriptions for electronics", subCategoryNames,"1234");
+
+        when(categoryService.getCategoryById("1234")).thenThrow(Exception.class);
+
+        this.mvc.perform(get("/api/v1/category/1234").contentType(MediaType.APPLICATION_JSON).content(asJsonString(category))).andDo(print())
+                .andExpect(status().is5xxServerError()).andExpect(content().string(containsString("Server Error")));
     }
 
     @Test

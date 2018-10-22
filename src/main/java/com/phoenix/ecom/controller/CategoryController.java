@@ -18,42 +18,45 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-
+    @CrossOrigin
     @GetMapping("/category")
-    public @ResponseBody ResponseEntity<List<Category>> displayAllCategories(){
-        try{
-            return new ResponseEntity<>(categoryService.getAllCategories(),HttpStatus.OK);
-        }catch(Exception e){
-            return new ResponseEntity("{\"message\":\"Server Error\"}",HttpStatus.INTERNAL_SERVER_ERROR);
+    public @ResponseBody
+    ResponseEntity<List<Category>> displayAllCategories() {
+        try {
+            return new ResponseEntity<>(categoryService.getAllCategories(), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity("{\"message\":\"Server Error\"}", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
 
-//    @GetMapping("/category/{id}")
-//    public ResponseEntity<String> displayCategory(){
-//        return ResponseEntity.ok("read one category");
-//    }
-
-
-    @RequestMapping(value= "/category", method=RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<String> createNewCategory(@RequestBody Category category){
-        try{
-            categoryService.createNewCategory(category);
-            return new ResponseEntity("{ \"message\":\"Category created successfully\"}",HttpStatus.CREATED);
+    @GetMapping("/category/{id}")
+    public ResponseEntity<String> displayCategory(@PathVariable String id) {
+        try {
+            return new ResponseEntity(categoryService.getCategoryById(id), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity("{\"message\":\"Server Error\"}", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        catch(Exception e){
+    }
+
+
+    @RequestMapping(value="/category", method=RequestMethod.POST, produces="application/json")
+    public ResponseEntity<String> createNewCategory(@RequestBody Category category) {
+        try {
+            categoryService.createNewCategory(category);
+            return new ResponseEntity("{ \"message\":\"Category created successfully\"}", HttpStatus.CREATED);
+        } catch (Exception e) {
             return new ResponseEntity("{\"message\" : \"Server Error\"}", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }
 
     @DeleteMapping("/category/{id}")
-    public ResponseEntity<String>deleteCategory(@RequestBody Category category){
+    public ResponseEntity<String> deleteCategory(@RequestBody Category category) {
         try {
             categoryService.deleteCategory(category);
             return new ResponseEntity<>("{ \"message\":\"Category deleted successfully\"}", HttpStatus.OK);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity("{\"message\" : \"Server Error\"}", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -70,5 +73,8 @@ public class CategoryController {
         }
 
     }
+
+
+
 
 }

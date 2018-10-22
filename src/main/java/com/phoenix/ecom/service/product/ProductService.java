@@ -58,7 +58,7 @@ public class ProductService {
         for (Product product: listOfAllProducts) {
             String productName = product.getName().toLowerCase();
             String productDescription = product.getDescription().toLowerCase();
-            String productCategoryName = categoryService.getAllCategories().get(0).getName().toLowerCase();
+            String productCategoryName = categoryService.getCategoryById(product.getCategoryId()).getName();
             String subCategoryName = product.getSubCategoryId().toLowerCase();
             String categoryId = product.getCategoryId().toLowerCase();
             String productId = product.getId().toLowerCase();

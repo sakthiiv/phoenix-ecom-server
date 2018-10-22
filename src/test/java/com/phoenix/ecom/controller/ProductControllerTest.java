@@ -32,6 +32,7 @@ public class ProductControllerTest extends AbstractTest {
     @MockBean
     private ProductService productService;
 
+
     @Test
     public void shouldCreateAProduct() throws Exception {
 
@@ -63,6 +64,22 @@ public class ProductControllerTest extends AbstractTest {
                 .andExpect(content().json(inputJson));
     }
 
+
+//    @Test
+//    public void shouldRetrieveListOfProductsMatchingASearchString() throws Exception{
+//        String uri = "/api/v1/search/{q}";
+//        Product product = initializeProduct("samsung");
+//        product.setId("1234");
+//        String inputJson = super.mapToJsonString(product);
+//        List<Product> filteredProductList = new ArrayList<Product>();
+//        filteredProductList.add(product);
+//
+//        when(productService.searchProducts("samsung")).thenReturn(filteredProductList);
+//
+//        this.mvc.perform(get(uri, "samsung").contentType(MediaType.APPLICATION_JSON)).andDo(print()).andExpect(status().isOk())
+//                .andExpect(content().json(inputJson));
+//
+//    }
 
     @Test
     public void shouldRetrieveAllProduct() throws Exception {

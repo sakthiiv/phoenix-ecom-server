@@ -15,4 +15,6 @@ public interface IProductRepository {
     Product updateProduct(String id, Product product);
 
     void deleteProduct(Product product);
+
+     List<Product> listAllProducts();
 }

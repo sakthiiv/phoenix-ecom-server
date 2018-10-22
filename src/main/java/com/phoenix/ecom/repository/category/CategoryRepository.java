@@ -35,6 +35,7 @@ public class CategoryRepository implements ICategoryRepository {
         mongoTemplate.findAndRemove(query,Category.class,collectionName);
     }
 
+
     @Override
     public void updateCategory(Category category) {
         Query findQuery = new Query();

@@ -64,4 +64,11 @@ public class ProductRepository implements IProductRepository{
         mongoTemplate.remove(product, "product");
     }
 
+
+    @Override
+    public List<Product> listAllProducts() {
+
+        return findProductByCategoryIdAndSubCategoryId(null,null);
+    }
+
 }

@@ -50,4 +50,11 @@ public class ProductController {
         return new ResponseEntity<>("{ \"message\":\"Product deleted successfully\"}", HttpStatus.OK);
     }
 
+
+    @GetMapping(value = "/search/{q}" , produces = MediaType.APPLICATION_JSON_VALUE)
+    public  ResponseEntity<List<Product>>  searchProducts(@PathVariable("q") String query) throws Exception{
+        List<Product> productList = productService.searchProducts(query);
+        return new ResponseEntity<>(productList, HttpStatus.OK);
+    }
+
 }

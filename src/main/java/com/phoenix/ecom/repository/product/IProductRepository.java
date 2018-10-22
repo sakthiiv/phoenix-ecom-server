@@ -17,4 +17,6 @@ public interface IProductRepository {
     void deleteProduct(Product product);
 
      List<Product> listAllProducts();
+
+    List<Product> listAllProductsByCategoryID(String categoryId);
 }

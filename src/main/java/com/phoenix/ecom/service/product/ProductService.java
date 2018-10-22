@@ -76,6 +76,11 @@ public class ProductService {
     }
 
 
+    public List<Product> getProductListByCategoryId(String categoryId){
+        return productRepository.listAllProductsByCategoryID(categoryId);
+    }
+
+
     public Product updateProduct(String id, Product productRequestToBeUpdated) throws Exception {
         Product product = getProduct(id);
         if (product != null) {

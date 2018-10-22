@@ -71,4 +71,10 @@ public class ProductRepository implements IProductRepository{
         return findProductByCategoryIdAndSubCategoryId(null,null);
     }
 
+
+    @Override
+    public List<Product> listAllProductsByCategoryID(String categoryId){
+        return findProductByCategoryIdAndSubCategoryId(categoryId,null);
+    }
+
 }

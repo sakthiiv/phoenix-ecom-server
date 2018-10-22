@@ -57,4 +57,11 @@ public class ProductController {
         return new ResponseEntity<>(productList, HttpStatus.OK);
     }
 
+
+    @GetMapping(value = "/productlist/{categoryId}" , produces = MediaType.APPLICATION_JSON_VALUE)
+    public  ResponseEntity<List<Product>>  getProductListByCategoryId(@PathVariable("categoryId") String categoryId) throws Exception{
+        List<Product> productList = productService.getProductListByCategoryId(categoryId);
+        return new ResponseEntity<>(productList, HttpStatus.OK);
+    }
+
 }

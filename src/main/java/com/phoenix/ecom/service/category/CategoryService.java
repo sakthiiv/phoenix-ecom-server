@@ -28,9 +28,9 @@ public class CategoryService {
         }
     }
 
-    public void deleteCategory(Category category){
+    public void deleteCategory(String id){
         try {
-            categoryRepository.deleteCategory(category.getId());
+            categoryRepository.deleteCategory(id);
         } catch (MongoException e){
             throw e;
         }

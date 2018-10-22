@@ -52,9 +52,9 @@ public class CategoryController {
     }
 
     @DeleteMapping("/category/{id}")
-    public ResponseEntity<String> deleteCategory(@RequestBody Category category) {
+    public ResponseEntity<String> deleteCategory(@PathVariable String id) {
         try {
-            categoryService.deleteCategory(category);
+            categoryService.deleteCategory(id);
             return new ResponseEntity<>("{ \"message\":\"Category deleted successfully\"}", HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity("{\"message\" : \"Server Error\"}", HttpStatus.INTERNAL_SERVER_ERROR);

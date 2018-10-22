@@ -9,7 +9,6 @@ import org.mockito.ArgumentCaptor;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 
-import javax.print.attribute.standard.Media;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -136,19 +135,17 @@ public class CategoryControllerTest extends AbstractTest{
     @Test
     public void shouldDeleteTheSpecificCategory() throws Exception {
         String id  = "123";
-        List subCategoryNames = new ArrayList<String>();
-        Category category = initializeCategory("", "", subCategoryNames,id);
-        String inputJson = super.mapToJsonString(category);
 
-        this.mvc.perform(delete("/api/v1/category/123").contentType(MediaType.APPLICATION_JSON).content(inputJson)).andDo(print()).andExpect(status().isOk())
+
+        this.mvc.perform(delete("/api/v1/category/123").contentType(MediaType.APPLICATION_JSON).content(id)).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("Category deleted successfully")));
 
 
-        ArgumentCaptor<Category> ac = ArgumentCaptor.forClass(Category.class);
+        ArgumentCaptor<String> ac = ArgumentCaptor.forClass(String.class);
 
         verify(categoryService, times(1)).deleteCategory(ac.capture());
-        Category value = ac.getValue();
-        assertEquals("123",value.getId());
+        String value = ac.getValue();
+        assertEquals("123",value);
 
     }
 
@@ -157,7 +154,7 @@ public class CategoryControllerTest extends AbstractTest{
         String id  = "123";
         List subCategoryNames = new ArrayList<String>();
         Category category = initializeCategory("", "", subCategoryNames,id);
-        ArgumentCaptor<Category> ac = ArgumentCaptor.forClass(Category.class);
+        ArgumentCaptor<String> ac = ArgumentCaptor.forClass(String.class);
         String inputJson = super.mapToJsonString(category);
 
         doThrow(IllegalArgumentException.class).when(categoryService).deleteCategory(ac.capture());

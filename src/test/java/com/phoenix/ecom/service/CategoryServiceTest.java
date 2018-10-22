@@ -94,11 +94,8 @@ public class CategoryServiceTest {
     @Test
     public void shouldDeleteASpecificCategory() {
         String categoryId = "123";
-        List subCategoryNames = new ArrayList<String>();
-        Category category = initializeCategory("", "", subCategoryNames, categoryId);
-        ArgumentCaptor<Category> ac = ArgumentCaptor.forClass(Category.class);
 
-        categoryService.deleteCategory(category);
+        categoryService.deleteCategory(categoryId);
 
         verify(categoryRepository, times(1)).deleteCategory(categoryId);
     }
@@ -106,13 +103,10 @@ public class CategoryServiceTest {
     @Test(expected = MongoException.class)
     public void shouldThrowAnExceptionIfThereIsAnErrorInTryingToDeleteACategoryByTheRepository() {
         String categoryId = "123";
-        List subCategoryNames = new ArrayList<String>();
-        Category category = initializeCategory("Electronics", "Descriptions for electronics", subCategoryNames, categoryId);
-        ArgumentCaptor<Category> ac = ArgumentCaptor.forClass(Category.class);
 
         doThrow(MongoException.class).when(categoryRepository).deleteCategory(categoryId);
 
-        categoryService.deleteCategory(category);
+        categoryService.deleteCategory(categoryId);
 
     }
 

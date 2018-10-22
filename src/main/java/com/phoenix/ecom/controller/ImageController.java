@@ -29,9 +29,8 @@ public class ImageController {
         String base64ImageContent = imageRepository.getImageContent(id);
         String base64Image = base64ImageContent.split(",")[1];
 
-      // byte[] imageBytes = javax.xml.bind.DatatypeConverter.parseBase64Binary(base64Image);
-       //return imageBytes;
+       byte[] imageBytes = javax.xml.bind.DatatypeConverter.parseBase64Binary(base64Image);
+       return imageBytes;
 
-        return new byte[10];
     }
 }

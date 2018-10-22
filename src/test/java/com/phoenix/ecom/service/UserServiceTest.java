@@ -2,6 +2,8 @@ package com.phoenix.ecom.service;
 
 import com.phoenix.ecom.model.Category;
 import com.phoenix.ecom.model.User;
+import com.phoenix.ecom.repository.user.AdminRepository;
+import com.phoenix.ecom.repository.user.CustomerRepository;
 import com.phoenix.ecom.repository.user.UserRepository;
 import com.phoenix.ecom.service.user.UserService;
 import org.junit.Before;
@@ -21,20 +23,41 @@ public class UserServiceTest {
     @Mock
     private UserRepository userRepository;
 
+    @Mock
+    private CustomerRepository customerRepository;
+
+    @Mock
+    private AdminRepository adminRepository;
+
     private UserService userService;
 
     @Before
     public void setUp() throws Exception {
-        userService = new UserService(userRepository);
+        userService = new UserService(userRepository,customerRepository,adminRepository);
     }
     @Test
-    public void shouldDeleteASpecificCategory() {
+    public void shouldCreateANewUser() {
         User user = new User();
         user.setEmailId("abc@abc.com");
+        user.setRole("customer");
+
         ArgumentCaptor<User> ac = ArgumentCaptor.forClass(User.class);
         userService.createNewUser(user);
 
         verify(userRepository, times(1)).SaveUser(user);
+
+
+    }
+
+    @Test
+    public void shouldSendAMessageThatAUserIsAlreadyCreatedIfUserNameOrEmailAlreadyExists(){
+
+        User user = new User();
+        user.setEmailId("abc@abc.com");
+        user.setRole("customer");
+
+        ArgumentCaptor<User> ac = ArgumentCaptor.forClass(User.class);
+        userService.createNewUser(user);
 
     }
 }

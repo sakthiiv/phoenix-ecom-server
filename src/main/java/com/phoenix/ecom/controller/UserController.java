@@ -17,7 +17,7 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/user/register", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<String> createNewCategory(@RequestBody User user) {
+    public ResponseEntity<String> createNewUser(@RequestBody User user) {
         try {
             userService.createNewUser(user);
             return new ResponseEntity("{ \"message\":\"User created successfully\"}", HttpStatus.CREATED);

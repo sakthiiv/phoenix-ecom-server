@@ -51,9 +51,7 @@ public class CategoryRepository implements ICategoryRepository {
 
     @Override
     public Category findCategoryById(String id) {
-        Query query = new Query();
-        query.addCriteria(Criteria.where("id").is(id));
-        return mongoTemplate.findById(query,Category.class);
+        return mongoTemplate.findById(new ObjectId(id),Category.class,collectionName);
     }
 
 

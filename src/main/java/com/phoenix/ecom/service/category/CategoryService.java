@@ -36,7 +36,6 @@ public class CategoryService {
         }
     }
 
-
     public List<Category> getAllCategories() throws Exception {
         try {
             return categoryRepository.getAllCategories();

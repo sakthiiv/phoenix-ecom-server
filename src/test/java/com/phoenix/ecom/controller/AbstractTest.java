@@ -33,15 +33,18 @@ public abstract class AbstractTest {
 
     protected static String mapToJsonString(final Object obj) throws JsonProcessingException {
         final ObjectMapper objectMapper = new ObjectMapper();
-        final String res = objectMapper.writeValueAsString(obj);
-        return res;
+        return objectMapper.writeValueAsString(obj);
     }
 
-    protected Category initializeCategory(String categoryName, String description, List<String> subCategoryNames,String categoryId){
+    protected Category initializeCategory(String categoryName, String description,
+                                          List<String> subCategoryNames,String categoryId){
         Category category=new Category();
         category.setId(categoryId);
         category.setDescription(description);
         category.setName(categoryName);
+
+        //TODO: new CategoryBuilder().withId().withDescription().build();
+
         List<Category> subCategories=new ArrayList<>();
         for(String subCategoryName : subCategoryNames){
             Category subCategory=new Category();
@@ -53,7 +56,8 @@ public abstract class AbstractTest {
     }
 
     protected Product initializeProduct(String productName){
-        Product product = new Product(productName, 200, "Category", "SubCategory", "Description", "fgdh");
+        Product product = new Product(productName, 200, "Category",
+                "SubCategory", "Description", "fgdh");
         return product;
     }
 }

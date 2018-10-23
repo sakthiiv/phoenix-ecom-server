@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 
+
+
 @Repository
 public class CustomerRepository implements ICustomerRepository {
     private static final String collectionName = "customer";
@@ -17,4 +19,6 @@ public class CustomerRepository implements ICustomerRepository {
 
         mongoTemplate.insert(customer, collectionName);
     }
+
+
 }

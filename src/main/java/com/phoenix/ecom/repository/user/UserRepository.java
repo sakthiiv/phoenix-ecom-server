@@ -1,11 +1,13 @@
 package com.phoenix.ecom.repository.user;
 
+import com.phoenix.ecom.model.Customer;
 import com.phoenix.ecom.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -35,4 +37,12 @@ public class UserRepository implements IUserRepository{
 
 
     }
+    public User getUser(String userName, String password) {
+            Query query = new Query(Criteria.where("userName").is(userName).and("password").is(password));
+            if(!StringUtils.isEmpty(mongoTemplate.findOne(query, User.class,collectionName).getUserName())){
+                return mongoTemplate.findOne(query, User.class,collectionName);
+            }
+            return null;
+        }
+
 }

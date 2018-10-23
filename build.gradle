@@ -30,8 +30,18 @@ dependencies {
 	compile 'org.mongodb:mongodb-driver:3.6.3'
 	compile 'org.springframework.data:spring-data-mongodb:2.0.6.RELEASE'
 	compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.6.3'
+    compile('javax.xml.bind:jaxb-api:2.3.0')
+    compile("com.auth0:java-jwt:3.4.0")
+    compile 'io.jsonwebtoken:jjwt-api:0.10.5'
+    compile 'io.jsonwebtoken:jjwt-jackson:0.10.5'
+    runtime 'io.jsonwebtoken:jjwt-impl:0.10.5'
+    compile("io.jsonwebtoken:jjwt-api:0.10.5")
 	implementation('org.springframework.boot:spring-boot-starter-data-mongodb')
-	
-	
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.10.5'
+    runtimeOnly('io.jsonwebtoken:jjwt-orgjson:0.10.5') {
+        exclude group: 'org.json', module: 'json' //provided by Android natively
+    }
+
+
 }
 

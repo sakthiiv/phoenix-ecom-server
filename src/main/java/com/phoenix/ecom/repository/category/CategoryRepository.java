@@ -20,7 +20,11 @@ public class CategoryRepository implements ICategoryRepository {
 
     @Override
     public void saveCategory(Category category) {
-        mongoTemplate.insert(category, collectionName);
+        for (Category subCategory:category.getSubCategory()) {
+            subCategory.setId(new ObjectId().toString());
+        }
+        mongoTemplate.insert(category, collectionName
+        );
     }
 
     @Override

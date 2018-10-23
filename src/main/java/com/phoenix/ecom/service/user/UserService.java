@@ -29,12 +29,18 @@ public class UserService {
         this.customerRepository = customerRepository;
         this.adminRepository = adminRepository;
     }
-    public void createNewUser(User user){
-        userRepository.SaveUser(user);
-        if(user.getRole() == "customer"){
-            CreateCustomer(user);
-        }else {
-            CreateAdmin(user);
+
+    public void createNewUser(User user) throws Exception {
+        boolean userExists = userRepository.VerifyUserAlreadyExists(user);
+        if (!userExists) {
+            userRepository.SaveUser(user);
+            if (user.getRole() == "customer") {
+                CreateCustomer(user);
+            } else {
+                CreateAdmin(user);
+            }
+        }else{
+            throw new Exception("User already exists!");
         }
 
     }

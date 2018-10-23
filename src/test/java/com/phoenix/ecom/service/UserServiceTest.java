@@ -36,7 +36,7 @@ public class UserServiceTest {
         userService = new UserService(userRepository,customerRepository,adminRepository);
     }
     @Test
-    public void shouldCreateANewUser() {
+    public void shouldCreateANewUser() throws Exception {
         User user = new User();
         user.setEmailId("abc@abc.com");
         user.setRole("customer");
@@ -46,18 +46,13 @@ public class UserServiceTest {
 
         verify(userRepository, times(1)).SaveUser(user);
 
-
     }
 
-    @Test
-    public void shouldSendAMessageThatAUserIsAlreadyCreatedIfUserNameOrEmailAlreadyExists(){
+//    @Test
+//    public void shouldNotCreateAUserIfTheUserNameOrEmailIdAlreadyExists() throws Exception{
+//        User user = new User();
+//        user.setEmailId("abc@abc.com");
+//        //user.setUserName();
+//    }
 
-        User user = new User();
-        user.setEmailId("abc@abc.com");
-        user.setRole("customer");
-
-        ArgumentCaptor<User> ac = ArgumentCaptor.forClass(User.class);
-        userService.createNewUser(user);
-
-    }
 }

@@ -20,7 +20,11 @@ public class CategoryRepository implements ICategoryRepository {
 
     @Override
     public void saveCategory(Category category) {
-        mongoTemplate.insert(category, collectionName);
+        for (Category subCategory:category.getSubCategory()) {
+            subCategory.setId(new ObjectId().toString());
+        }
+        mongoTemplate.insert(category, collectionName
+        );
     }
 
     @Override
@@ -32,7 +36,10 @@ public class CategoryRepository implements ICategoryRepository {
     public void deleteCategory(String id) {
         Query query = new Query();
         query.addCriteria(Criteria.where("_id").is(new ObjectId(id)));
-        mongoTemplate.findAndRemove(query,Category.class,collectionName);
+
+        Update updatequery = new Update();
+        updatequery.set("IsValid",false);
+        mongoTemplate.findAndModify(query,updatequery,Category.class,collectionName);
     }
 
 

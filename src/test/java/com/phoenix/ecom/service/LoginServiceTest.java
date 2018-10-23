@@ -37,7 +37,7 @@ public class LoginServiceTest {
         user.setEmailId("abc@abc.com");
         user.setRole("customer");
 
-        when(userRepository.getUser(user.getUserName(),user.getPassword())).thenReturn(true);
+        when(userRepository.getUser(user.getUserName(),user.getPassword())).thenReturn(user);
         when(authentication.createJWT(user)).thenReturn("JWTToken");
 
         Assert.assertEquals(loginService.login(user),"JWTToken");

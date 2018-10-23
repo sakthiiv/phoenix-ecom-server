@@ -22,6 +22,9 @@ public class UserController {
             userService.createNewUser(user);
             return new ResponseEntity("{ \"message\":\"User created successfully\"}", HttpStatus.CREATED);
         } catch (Exception e) {
+            if (e.getMessage() == "User already exists!") {
+                return new ResponseEntity("{\"message\" : \"User Already Exists!\"}", HttpStatus.CONFLICT);
+            }
             return new ResponseEntity("{\"message\" : \"Server Error\"}", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 

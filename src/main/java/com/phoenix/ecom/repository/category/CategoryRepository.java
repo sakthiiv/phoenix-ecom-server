@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -47,7 +48,11 @@ public class CategoryRepository implements ICategoryRepository {
     public void updateCategory(Category category) {
         Query findQuery = new Query();
         Update updateQuery = new Update();
-
+        for (Category subCategory:category.getSubCategory()) {
+            if(StringUtils.isEmpty(subCategory.getId())){
+                subCategory.setId(new ObjectId().toString());
+            }
+        }
         updateQuery.set("description",category.getDescription());
         updateQuery.set("name",category.getName());
         updateQuery.set("subCategory",category.getSubCategory());

@@ -43,6 +43,7 @@ public class CategoryController {
     @RequestMapping(value="/category", method=RequestMethod.POST, produces="application/json")
     public ResponseEntity<String> createNewCategory(@RequestBody Category category) {
         try {
+            category.setValid(true);
             categoryService.createNewCategory(category);
             return new ResponseEntity("{ \"message\":\"Category created successfully\"}", HttpStatus.CREATED);
         } catch (Exception e) {
@@ -64,10 +65,12 @@ public class CategoryController {
 
 
     @PutMapping("/category/{id}")
-    public ResponseEntity<Object> updateCategory(@RequestBody Category category) {
+    public ResponseEntity<Object> updateCategory(@RequestBody Category category,@PathVariable String id) {
         try{
+            category.setId(id);
+            category.setValid(true);
             categoryService.updateCategory(category);
-            return ResponseEntity.ok("Category updated successfully");
+            return new ResponseEntity<>("{ \"message\":\"Category updated successfully\"}", HttpStatus.OK);
         } catch (Exception e){
             return new ResponseEntity("{\"message\" : \"Server Error\"}", HttpStatus.INTERNAL_SERVER_ERROR);
         }

@@ -30,7 +30,9 @@ public class CategoryRepository implements ICategoryRepository {
 
     @Override
     public List<Category> getAllCategories() {
-        return mongoTemplate.findAll(Category.class);
+        Query query = new Query();
+        query.addCriteria(Criteria.where("IsValid").is(true));
+        return mongoTemplate.find(query,Category.class);
     }
 
     @Override

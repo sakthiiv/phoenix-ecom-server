@@ -9,12 +9,14 @@ import org.mockito.ArgumentCaptor;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -46,6 +48,20 @@ public class CartControllerTest extends AbstractTest{
         ArgumentCaptor<Cart> ac = ArgumentCaptor.forClass(Cart.class);
 
         verify(cartService, times(1)).createCart(ac.capture());
+    }
+
+    @Test
+    public void shouldDeleteProductFromCart() throws Exception {
+
+        String uri = "/api/v1/cart/{id}";
+        String id = "123";
+        String prodId = "Sony";
+        String input = mapToJsonString(Arrays.asList(prodId));
+
+        this.mvc.perform(delete(uri, id).contentType(MediaType.APPLICATION_JSON).content(input)).andDo(print()).andExpect(status().isOk())
+                .andExpect(content().string(containsString("\"Product deleted from cart successfully\"")));
+
+        verify(cartService, times(1)).deleteCart(id, Arrays.asList(prodId));
     }
 
 

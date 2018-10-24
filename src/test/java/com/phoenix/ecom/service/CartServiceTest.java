@@ -9,6 +9,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.Arrays;
+
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -31,6 +33,16 @@ public class CartServiceTest {
         cartService.createCart(cart);
 
         verify(cartRepository, times(1)).addProduct(cart);
+    }
+
+    @Test
+    public void shouldDeleteCartEntry(){
+
+        String userId = "1234";
+        String productId = "sony";
+        cartService.deleteCart(userId, Arrays.asList(productId));
+
+        verify(cartRepository, times(1)).deleteCart(userId, Arrays.asList(productId));
     }
 
 }

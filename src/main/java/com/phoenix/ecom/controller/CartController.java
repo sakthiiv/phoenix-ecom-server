@@ -1,9 +1,7 @@
 package com.phoenix.ecom.controller;
 
 import com.phoenix.ecom.model.Cart;
-import com.phoenix.ecom.model.Product;
 import com.phoenix.ecom.service.cart.CartService;
-import com.phoenix.ecom.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -42,5 +40,11 @@ public class CartController {
         }
 
         return new ResponseEntity<>(cart, HttpStatus.ACCEPTED.OK);
+    }
+
+    @DeleteMapping(value = "/cart/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public  ResponseEntity<String> delete(@PathVariable("id") String id, @RequestBody List<String> productIds) {
+        cartService.deleteCart(id, productIds);
+        return new ResponseEntity<>("{ \"message\":\"Product deleted from cart successfully\"}", HttpStatus.ACCEPTED.OK);
     }
 }

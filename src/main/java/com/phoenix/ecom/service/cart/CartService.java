@@ -6,6 +6,8 @@ import com.phoenix.ecom.repository.cart.ICartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CartService {
 
@@ -22,5 +24,9 @@ public class CartService {
 
     public Cart getCart(String userId) {
         return cartRepository.getCart(userId);
+    }
+
+    public void deleteCart(String id, List<String> productIds) {
+        cartRepository.deleteCart(id, productIds);
     }
 }

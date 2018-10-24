@@ -7,12 +7,20 @@ import java.io.Serializable;
 import java.util.List;
 
 
-
 @Document(collection = "cart")
 public class Cart implements Serializable {
 
+
+    public Cart() {
+    }
+
     String userId;
     List<Product> products;
+
+    public Cart(String userId, List<Product> products) {
+        this.userId = userId;
+        this.products = products;
+    }
 
     public List<Product> getProducts() {
         return products;

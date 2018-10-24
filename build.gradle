@@ -36,7 +36,7 @@ dependencies {
     compile 'io.jsonwebtoken:jjwt-jackson:0.10.5'
     runtime 'io.jsonwebtoken:jjwt-impl:0.10.5'
     compile("io.jsonwebtoken:jjwt-api:0.10.5")
-    compile "org.springframework.boot:spring-boot-starter-security"
+    //compile "org.springframework.boot:spring-boot-starter-security"
     implementation('org.springframework.boot:spring-boot-starter-data-mongodb')
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.10.5'
     runtimeOnly('io.jsonwebtoken:jjwt-orgjson:0.10.5') {

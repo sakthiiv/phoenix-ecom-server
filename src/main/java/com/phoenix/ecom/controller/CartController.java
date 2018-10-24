@@ -21,8 +21,12 @@ public class CartController {
     CartService cartService;
     @PostMapping(value = "/cart" , produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> create(@RequestBody Cart cartRequest){
+
         cartService.createCart(cartRequest);
-        return new ResponseEntity<>("{ \"message\":\"Product added to cart successfully\"}", HttpStatus.CREATED);
+
+        return new ResponseEntity<>(
+                "{ \"message\":\"Product added to cart successfully\"}",
+                HttpStatus.CREATED);
     }
 
 }

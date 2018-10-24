@@ -3,6 +3,7 @@ package com.phoenix.ecom.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.phoenix.ecom.EcomApplication;
+import com.phoenix.ecom.model.Cart;
 import com.phoenix.ecom.model.Category;
 import com.phoenix.ecom.model.Product;
 import org.junit.runner.RunWith;
@@ -60,4 +61,10 @@ public abstract class AbstractTest {
                 "SubCategory", "Description", "fgdh");
         return product;
     }
+
+    protected Cart initializeCart(String userId, List<Product> products) {
+        return new Cart(userId, products);
+    }
+
+
 }

@@ -6,6 +6,8 @@ import com.phoenix.ecom.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.*;
+
 @Service
 public class LoginService {
 
@@ -22,13 +24,18 @@ public class LoginService {
     }
 
 
-    public String login(User user) {
+    public Optional<Map<String,String>> login(User user) {
         User loggedInUser = userRepository.getUser(user.getUserName(),user.getPassword());
        if(loggedInUser != null) {
-           return authentication.createJWT(loggedInUser);
+           Map<String,String> userDetails = new HashMap<String,String>();
+           userDetails.put("role",loggedInUser.getRole());
+           userDetails.put("userId",loggedInUser.getId());
+           userDetails.put("token",authentication.createJWT(loggedInUser));
+           userDetails.put("userName",loggedInUser.getUserName());
+           return Optional.ofNullable(userDetails);
        }
        else
-           return null;
+           return Optional.ofNullable(null);
     }
 
 

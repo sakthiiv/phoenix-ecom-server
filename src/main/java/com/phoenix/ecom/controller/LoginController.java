@@ -3,10 +3,17 @@ package com.phoenix.ecom.controller;
 import com.phoenix.ecom.model.User;
 import com.phoenix.ecom.service.user.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
+import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -20,17 +27,28 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
-    Map<String,String> loginUser(@RequestBody User user) {
+    ResponseEntity<String> loginUser(@RequestBody User user) {
         try {
-            String token = loginService.login(user);
-            HashMap<String,String> entity = new HashMap<>();
-            entity.put("_token", token);
-            return entity;
+            Optional<Map<String,String>> userDetails = loginService.login(user);
+            if(userDetails.isPresent()) {
+                return new ResponseEntity<>
+                        ("{\"token\":\"" + userDetails.get().get("token")+ "\",\"role\":\""+ userDetails.get().get("role") +
+                                "\",\"userId\":\""+ userDetails.get().get("userId") + "\",\"userName\":\""+ userDetails.get().get("userName")  + "\"}", HttpStatus.OK);
+            }else{
+                return new ResponseEntity("{\"message\":\"Login Failed\"}", HttpStatus.FORBIDDEN);
+            }
         } catch (Exception e) {
-            HashMap<String,String> entity = new HashMap<>();
-            entity.put("message", e.getMessage());
-            return entity;
+            return new ResponseEntity("{\"message\":\"Server Error\"}", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }
+
+   /* @RequestMapping(value="/logout", method = RequestMethod.GET)
+    public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null){
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+        return "redirect:/";
+    }*/
 }

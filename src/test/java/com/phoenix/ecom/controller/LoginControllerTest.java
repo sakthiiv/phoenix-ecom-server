@@ -3,19 +3,18 @@ package com.phoenix.ecom.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.phoenix.ecom.model.User;
 import com.phoenix.ecom.service.user.LoginService;
-import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
-import static org.hamcrest.Matchers.containsString;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class LoginControllerTest extends AbstractTest{
@@ -43,23 +42,25 @@ public class LoginControllerTest extends AbstractTest{
 
 
     @Test
-    public void shouldLoginUser() throws Exception{
+    public void shouldForbidLoginOfUser() throws Exception{
 
         String username = "user!";
         String password = "123456";
         User user = new User();
         user.setUserName("user!");
-        user.setEmailId("user@user.com");
-        user.setRole("User");
+        user.setRole("Admin");
+        user.setId("123456");
         user.setPassword("Password");
-        HashMap<String,String> entity = new HashMap<>();
-        entity.put("_token", "JWTToken");
+        Map<String,String> userDetails = new HashMap<String,String>();
+        userDetails.put("token","JWTToken");
+        userDetails.put("role","Admin");
+        userDetails.put("userId","123456");
+        Optional<Map<String,String>> loggedInUser =  Optional.of(userDetails);
 
-        when(loginService.login(user)).thenReturn("JWTToken");
+        when(loginService.login(user)).thenReturn(loggedInUser);
 
         this.mvc.perform(post("/api/v1/login").contentType(MediaType.APPLICATION_JSON).content(asJsonString(user)))
-                .andDo(print()).andExpect(status().isOk());
+                .andDo(print()).andExpect(status().isForbidden());
     }
-
 
 }

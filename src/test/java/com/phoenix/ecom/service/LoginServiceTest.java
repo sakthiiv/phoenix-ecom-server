@@ -12,6 +12,10 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -31,16 +35,24 @@ public class LoginServiceTest {
     }
 
 
+
     @Test
     public void shouldLoginUser(){
         User user = new User();
         user.setEmailId("abc@abc.com");
-        user.setRole("customer");
+        user.setRole("Admin");
+        user.setId("123456");
+        user.setUserName("userName");
+        Map<String,String> userDetails = new HashMap<String,String>();
+        userDetails.put("token","JWTToken");
+        userDetails.put("role","Admin");
+        userDetails.put("userId","123456");
+        userDetails.put("userName","userName");
 
         when(userRepository.getUser(user.getUserName(),user.getPassword())).thenReturn(user);
         when(authentication.createJWT(user)).thenReturn("JWTToken");
 
-        Assert.assertEquals(loginService.login(user),"JWTToken");
+        Assert.assertEquals(loginService.login(user), Optional.of(userDetails));
     }
 
 

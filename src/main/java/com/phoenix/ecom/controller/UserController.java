@@ -1,6 +1,5 @@
 package com.phoenix.ecom.controller;
 
-import com.phoenix.ecom.model.Category;
 import com.phoenix.ecom.model.User;
 import com.phoenix.ecom.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

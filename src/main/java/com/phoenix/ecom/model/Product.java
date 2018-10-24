@@ -1,6 +1,7 @@
 package com.phoenix.ecom.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -34,7 +35,7 @@ public class Product implements Serializable {
 
     String description;
 
-    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     String imageContent;
 
     public String getId() {

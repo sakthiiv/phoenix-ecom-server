@@ -38,4 +38,9 @@ public class CartRepository implements ICartRepository{
             mongoTemplate.save(cartRequest, "cart");
         }
     }
+
+    @Override
+    public Cart getCart(String userId) {
+        return mongoTemplate.findOne(new Query(Criteria.where("userId").is(userId)), Cart.class);
+    }
 }

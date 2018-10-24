@@ -19,4 +19,8 @@ public class CartService {
     public void createCart(Cart cartRequest) {
         cartRepository.addProduct(cartRequest);
     }
+
+    public Cart getCart(String userId) {
+        return cartRepository.getCart(userId);
+    }
 }

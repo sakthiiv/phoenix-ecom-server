@@ -11,7 +11,7 @@ import java.util.List;
 public class Cart implements Serializable {
 
 
-    Cart() {
+    public Cart() {
     }
 
     String userId;

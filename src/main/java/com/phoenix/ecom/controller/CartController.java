@@ -19,6 +19,7 @@ public class CartController {
 
     @Autowired
     CartService cartService;
+
     @PostMapping(value = "/cart" , produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> create(@RequestBody Cart cartRequest){
 
@@ -29,4 +30,17 @@ public class CartController {
                 HttpStatus.CREATED);
     }
 
+
+    @GetMapping(value = "/cart/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public  ResponseEntity<Cart> get(@PathVariable("id") String id)
+    {
+        Cart cart = cartService.getCart(id);
+
+        if(cart == null || !cart.getProducts().isEmpty())
+        {
+            return new ResponseEntity<>(new Cart(), HttpStatus.NO_CONTENT);
+        }
+
+        return new ResponseEntity<>(cart, HttpStatus.ACCEPTED.OK);
+    }
 }

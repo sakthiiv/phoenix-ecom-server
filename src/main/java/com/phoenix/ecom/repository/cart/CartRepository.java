@@ -62,4 +62,9 @@ public class CartRepository implements ICartRepository{
             }
         }
     }
+
+    @Override
+    public void deleteCart(String userId) {
+        mongoTemplate.remove(new Query(Criteria.where("userId").is(userId)), "cart");
+    }
 }

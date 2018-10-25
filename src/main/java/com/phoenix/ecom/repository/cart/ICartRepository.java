@@ -11,4 +11,6 @@ public interface ICartRepository {
     Cart getCart(String userId);
 
     void deleteCart(String userId, List<String> productIds);
+
+    void deleteCart(String userId);
 }

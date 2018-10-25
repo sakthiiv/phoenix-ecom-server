@@ -13,10 +13,16 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'jacoco'
 
 group = 'com.phoenix.ecom'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
+
+jacoco {
+    toolVersion = "0.8.1"
+    reportsDir = file("$buildDir/customJacocoReportDir")
+}
 
 repositories {
     mavenCentral()
@@ -25,11 +31,11 @@ repositories {
 dependencies {
 
     compile('org.springframework.boot:spring-boot-starter-data-mongodb')
-    compile( 'org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-web')
     testCompile('org.springframework.boot:spring-boot-starter-test')
-	compile 'org.mongodb:mongodb-driver:3.6.3'
-	compile 'org.springframework.data:spring-data-mongodb:2.0.6.RELEASE'
-	compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.6.3'
+    compile 'org.mongodb:mongodb-driver:3.6.3'
+    compile 'org.springframework.data:spring-data-mongodb:2.0.6.RELEASE'
+    compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.6.3'
     compile('javax.xml.bind:jaxb-api:2.3.0')
     compile("com.auth0:java-jwt:3.4.0")
     compile 'io.jsonwebtoken:jjwt-api:0.10.5'
@@ -42,7 +48,12 @@ dependencies {
     runtimeOnly('io.jsonwebtoken:jjwt-orgjson:0.10.5') {
         exclude group: 'org.json', module: 'json' //provided by Android natively
     }
-
-
 }
 
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}

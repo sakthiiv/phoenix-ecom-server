@@ -53,7 +53,7 @@ public class LoginControllerTest extends AbstractTest{
         user.setPassword("Password");
         Map<String,String> userDetails = new HashMap<String,String>();
         userDetails.put("token","JWTToken");
-        userDetails.put("role","Admin");
+        userDetails.put("role","admin");
         userDetails.put("userId","123456");
         Optional<Map<String,String>> loggedInUser =  Optional.of(userDetails);
 

@@ -1,5 +1,6 @@
 package com.phoenix.ecom.config;
 
+import com.auth0.jwt.interfaces.Claim;
 import com.phoenix.ecom.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
@@ -19,7 +20,7 @@ public class Authentication {
 
     private static final String secretKey="The brown fox jumps over the lazy fdghdfghdfgdfgdfghfdghfdhfgdhdghgfvbgvcncgb " +
             "cxdmgxfwgxmsxgfcrmfczhsdxddfvgvgrgthnyjmnrgthjyuthggjmgdog";
-    private static final long ttlMillis = 5000;
+    private static final long ttlMillis = 300000;
 
     public String createJWT(User user) {
 
@@ -52,7 +53,7 @@ public class Authentication {
 
     }
 
-    public void parseJWT(String jwt) {
+    public Claims parseJWT(String jwt) {
 
         //This line will throw an exception if it is not a signed JWS (as expected)
         Claims claims = Jwts.parser()
@@ -62,5 +63,6 @@ public class Authentication {
         System.out.println("Subject: " + claims.getSubject());
         System.out.println("Issuer: " + claims.getIssuer());
         System.out.println("Expiration: " + claims.getExpiration());
+        return claims;
     }
 }

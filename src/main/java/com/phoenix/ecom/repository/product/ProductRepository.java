@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -54,8 +55,12 @@ public class ProductRepository implements IProductRepository{
 
     @Override
     public Product updateProduct(String id, Product product) {
+
         mongoTemplate.save(product, "product");
         Product productUpdated = mongoTemplate.findById(new ObjectId(id), Product.class);
+
+        mongoTemplate.findAndModify(new Query(Criteria.where("imageId").is(productUpdated.getId())), new Update().set("imageContent", productUpdated.getImageContent()), Image.class);
+
         return productUpdated;
     }
 

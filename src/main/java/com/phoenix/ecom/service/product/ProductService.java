@@ -99,6 +99,9 @@ public class ProductService {
             if(productRequestToBeUpdated.getPrice() != 0) {
                 product.setPrice(productRequestToBeUpdated.getPrice());
             }
+            if(productRequestToBeUpdated.getImageContent() != null){
+                product.setImageContent(productRequestToBeUpdated.getImageContent());
+            }
             return productRepository.updateProduct(id, product);
         }else {
             throw new Exception("Product to be updated not found");

@@ -34,7 +34,7 @@ public class CartController {
     {
         Cart cart = cartService.getCart(id);
 
-        if(cart == null || !cart.getProducts().isEmpty())
+        if(cart == null || cart.getProducts().isEmpty())
         {
             return new ResponseEntity<>(new Cart(), HttpStatus.NO_CONTENT);
         }

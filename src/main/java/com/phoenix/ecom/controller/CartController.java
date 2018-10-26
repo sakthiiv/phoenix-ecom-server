@@ -42,7 +42,7 @@ public class CartController {
         return new ResponseEntity<>(cart, HttpStatus.ACCEPTED.OK);
     }
 
-    @DeleteMapping(value = "/cart/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/cart/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public  ResponseEntity<String> delete(@PathVariable("id") String id, @RequestBody List<String> productIds) {
         cartService.deleteCart(id, productIds);
         return new ResponseEntity<>("{ \"message\":\"Product deleted from cart successfully\"}", HttpStatus.ACCEPTED.OK);

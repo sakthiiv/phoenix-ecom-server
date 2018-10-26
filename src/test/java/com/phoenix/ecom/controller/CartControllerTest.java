@@ -58,7 +58,7 @@ public class CartControllerTest extends AbstractTest{
         String prodId = "Sony";
         String input = mapToJsonString(Arrays.asList(prodId));
 
-        this.mvc.perform(delete(uri, id).contentType(MediaType.APPLICATION_JSON).content(input)).andDo(print()).andExpect(status().isOk())
+        this.mvc.perform(post(uri, id).contentType(MediaType.APPLICATION_JSON).content(input)).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("\"Product deleted from cart successfully\"")));
 
         verify(cartService, times(1)).deleteCart(id, Arrays.asList(prodId));

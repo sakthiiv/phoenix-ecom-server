@@ -13,6 +13,6 @@ public class CheckoutRepository {
     public String checkout(CheckoutOrder newOrder) {
 
         mongoTemplate.save(newOrder, "checkoutOrder");
-        return "abcd";
+        return newOrder.getOrderId();
     }
 }

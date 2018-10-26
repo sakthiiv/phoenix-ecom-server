@@ -19,4 +19,9 @@ public class CheckoutOrder {
         this.address = address;
         this.checkoutProducts = checkoutProducts;
     }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
 }
